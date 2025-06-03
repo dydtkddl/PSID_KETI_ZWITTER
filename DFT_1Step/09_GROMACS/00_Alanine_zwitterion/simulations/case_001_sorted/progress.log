@@ -1,0 +1,1477 @@
+
+$ gmx pdb2gmx -f case_001_sorted.pdb -o processed.gro -p topol.top -ff oplsaa -water tip3p -ter
+                     :-) GROMACS - gmx pdb2gmx, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx pdb2gmx -f case_001_sorted.pdb -o processed.gro -p topol.top -ff oplsaa -water tip3p -ter
+
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.r2b
+All occupancy fields zero. This is probably not an X-Ray structure
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/atomtypes.atp
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.rtp
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.hdb
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.n.tdb
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.c.tdb
+
+Back Off! I just backed up topol.top to ./#topol.top.1#
+9 out of 9 lines of specbond.dat converted successfully
+Before cleaning: 24 pairs
+Before cleaning: 24 dihedrals
+
+Back Off! I just backed up posre.itp to ./#posre.itp.1#
+9 out of 9 lines of specbond.dat converted successfully
+
+Back Off! I just backed up processed.gro to ./#processed.gro.1#
+
+GROMACS reminds you: "Boom Boom Boom Boom, I Want You in My Room" (Venga Boys)
+
+Using the Oplsaa force field in directory oplsaa.ff
+
+going to rename oplsaa.ff/aminoacids.r2b
+Reading case_001_sorted.pdb...
+Read '', 34 atoms
+
+Analyzing pdb file
+Splitting chemical chains based on TER records or chain id changing.
+
+There are 1 chains and 1 blocks of water and 8 residues with 34 atoms
+
+  chain  #res #atoms
+
+  1 ' '     1     13  
+
+  2 ' '     7     21  (only water)
+
+All occupancy fields zero. This is probably not an X-Ray structure
+
+Reading residue database... (Oplsaa)
+
+Processing chain 1 (13 atoms, 1 residues)
+
+Problem with chain definition, or missing terminal residues. This chain does not appear to contain a recognized chain molecule. If this is incorrect, you can edit residuetypes.dat to modify the behavior.
+
+Checking for duplicate atoms....
+
+Generating any missing hydrogen atoms and/or adding termini.
+
+Now there are 1 residues with 13 atoms
+
+Making bonds...
+
+Number of bonds was 12, now 12
+
+Generating angles, dihedrals and pairs...
+
+Making cmap torsions...
+
+There are   24 dihedrals,    1 impropers,   21 angles
+            24 pairs,       12 bonds and     0 virtual sites
+
+Total mass 89.094 a.m.u.
+
+Total charge -0.000 e
+
+Writing topology
+
+Processing chain 2 (21 atoms, 7 residues)
+
+Problem with chain definition, or missing terminal residues. This chain does not appear to contain a recognized chain molecule. If this is incorrect, you can edit residuetypes.dat to modify the behavior.
+
+Checking for duplicate atoms....
+
+Generating any missing hydrogen atoms and/or adding termini.
+
+Now there are 7 residues with 21 atoms
+
+Making bonds...
+
+Number of bonds was 14, now 14
+
+Generating angles, dihedrals and pairs...
+
+Making cmap torsions...
+
+There are    0 dihedrals,    0 impropers,    7 angles
+             0 pairs,       14 bonds and     0 virtual sites
+
+Total mass 126.108 a.m.u.
+
+Total charge 0.000 e
+
+Including chain 1 in system: 13 atoms 1 residues
+
+Including chain 2 in system: 21 atoms 7 residues
+
+Now there are 34 atoms and 8 residues
+
+Total mass in system 215.202 a.m.u.
+
+Total charge in system -0.000 e
+
+Writing coordinate file...
+
+		--------- PLEASE NOTE ------------
+
+You have successfully generated a topology from: case_001_sorted.pdb.
+
+The Oplsaa force field and the tip3p water model are used.
+
+		--------- ETON ESAELP ------------
+
+$ gmx editconf -f processed.gro -o newbox.gro -c -d 1.0 -bt cubic
+                     :-) GROMACS - gmx editconf, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx editconf -f processed.gro -o newbox.gro -c -d 1.0 -bt cubic
+
+
+Back Off! I just backed up newbox.gro to ./#newbox.gro.1#
+
+GROMACS reminds you: "Boom Boom Boom Boom, I Want You in My Room" (Venga Boys)
+
+Note that major changes are planned in future for editconf, to improve usability and utility.
+Read 34 atoms
+Volume: 0.544051 nm^3, corresponds to roughly 200 electrons
+No velocities found
+    system size :  0.597  0.870  1.049 (nm)
+    diameter    :  1.054               (nm)
+    center      :  0.035 -0.023 -0.018 (nm)
+    box vectors :  0.597  0.869  1.048 (nm)
+    box angles  :  90.00  90.00  90.00 (degrees)
+    box volume  :   0.54               (nm^3)
+    shift       :  1.492  1.550  1.545 (nm)
+new center      :  1.527  1.527  1.527 (nm)
+new box vectors :  3.054  3.054  3.054 (nm)
+new box angles  :  90.00  90.00  90.00 (degrees)
+new box volume  :  28.49               (nm^3)
+
+$ gmx grompp -f em.mdp -c newbox.gro -p topol.top -o em.tpr -maxwarn 1
+                      :-) GROMACS - gmx grompp, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx grompp -f em.mdp -c newbox.gro -p topol.top -o em.tpr -maxwarn 1
+
+Ignoring obsolete mdp entry 'ns_type'
+Generating 1-4 interactions: fudge = 0.5
+Number of degrees of freedom in T-Coupling group rest is 78.00
+The integrator does not provide a ensemble temperature, there is no system ensemble temperature
+
+NOTE 1 [file em.mdp]:
+  The optimal PME mesh load for parallel simulations is below 0.5
+  and for highly parallel simulations between 0.25 and 0.33,
+  for higher performance, increase the cut-off and the PME grid spacing.
+
+
+
+There was 1 NOTE
+
+Back Off! I just backed up em.tpr to ./#em.tpr.1#
+
+GROMACS reminds you: "Boom Boom Boom Boom, I Want You in My Room" (Venga Boys)
+
+Setting the LD random seed to -269254692
+
+Generated 330891 of the 330891 non-bonded parameter combinations
+
+Generated 330891 of the 330891 1-4 parameter combinations
+
+Excluding 3 bonded neighbours molecule type 'Other'
+
+Excluding 2 bonded neighbours molecule type 'SOL'
+Analysing residue names:
+There are:     1      Other residues
+There are:     7      Water residues
+Analysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...
+
+The largest distance between excluded atoms is 0.382 nm between atom 1 and 11
+Calculating fourier grid dimensions for X Y Z
+Using a fourier grid of 28x28x28, spacing 0.109 0.109 0.109
+
+Estimate for the relative computational load of the PME mesh part: 0.99
+
+This run will generate roughly 0 Mb of data
+
+$ gmx mdrun -deffnm em -nt 28
+                      :-) GROMACS - gmx mdrun, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx mdrun -deffnm em -nt 28
+
+
+Back Off! I just backed up em.log to ./#em.log.1#
+Reading file em.tpr, VERSION 2025.2 (single precision)
+
+NOTE: Parallelization is limited by the small number of atoms,
+      only starting 1 thread-MPI ranks.
+      You can use the -nt and/or -ntmpi option to optimize the number of threads.
+
+Using 1 MPI thread
+Using 28 OpenMP threads 
+
+
+NOTE: The number of threads is not equal to the number of (logical) cpus
+      and the -pin option is set to auto: will not pin threads to cpus.
+      This can lead to significant performance degradation.
+      Consider using -pin on (and -pinoffset in case you run multiple jobs).
+
+Back Off! I just backed up em.trr to ./#em.trr.1#
+
+Back Off! I just backed up em.edr to ./#em.edr.1#
+
+Steepest Descents:
+   Tolerance (Fmax)   =  1.00000e+03
+   Number of steps    =        50000
+
+writing lowest energy coordinates.
+
+Back Off! I just backed up em.gro to ./#em.gro.1#
+
+Steepest Descents converged to Fmax < 1000 in 20 steps
+Potential Energy  = -4.2171185e+02
+Maximum force     =  7.4700000e+02 on atom 26
+Norm of force     =  3.1105985e+02
+
+GROMACS reminds you: "Boom Boom Boom Boom, I Want You in My Room" (Venga Boys)
+
+
+$ gmx grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -o nvt.tpr -maxwarn 1
+                      :-) GROMACS - gmx grompp, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx grompp -f nvt.mdp -c em.gro -r em.gro -p topol.top -o nvt.tpr -maxwarn 1
+
+Ignoring obsolete mdp entry 'ns_type'
+Generating 1-4 interactions: fudge = 0.5
+
+NOTE 1 [file unknown]:
+  You are using constraints on all bonds, whereas the forcefield has been
+  parametrized only with constraints involving hydrogen atoms. We suggest
+  using constraints = h-bonds instead, this will also improve performance.
+
+Number of degrees of freedom in T-Coupling group System is 66.00
+
+NOTE 2 [file nvt.mdp]:
+  Removing center of mass motion in the presence of position restraints
+  might cause artifacts. When you are using position restraints to
+  equilibrate a macro-molecule, the artifacts are usually negligible.
+
+
+NOTE 3 [file nvt.mdp]:
+  The optimal PME mesh load for parallel simulations is below 0.5
+  and for highly parallel simulations between 0.25 and 0.33,
+  for higher performance, increase the cut-off and the PME grid spacing.
+
+
+
+There were 3 NOTEs
+
+Back Off! I just backed up nvt.tpr to ./#nvt.tpr.1#
+
+GROMACS reminds you: "Boom Boom Boom Boom, I Want You in My Room" (Venga Boys)
+
+Setting the LD random seed to -67111713
+
+Generated 330891 of the 330891 non-bonded parameter combinations
+
+Generated 330891 of the 330891 1-4 parameter combinations
+
+Excluding 3 bonded neighbours molecule type 'Other'
+
+turning all bonds into constraints...
+
+Excluding 2 bonded neighbours molecule type 'SOL'
+
+turning all bonds into constraints...
+
+Setting gen_seed to 921698044
+
+Velocities were taken from a Maxwell distribution at 300 K
+Analysing residue names:
+There are:     1      Other residues
+There are:     7      Water residues
+Analysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...
+
+The largest distance between excluded atoms is 0.385 nm between atom 1 and 11
+
+Determining Verlet buffer for a tolerance of 0.005 kJ/mol/ps at 300 K
+
+Calculated rlist for 1x1 atom pair-list as 1.011 nm, buffer size 0.011 nm
+
+Set rlist, assuming 4x4 atom pair-list, to 1.000 nm, buffer size 0.000 nm
+
+Note that mdrun will redetermine rlist based on the actual pair-list setup
+Calculating fourier grid dimensions for X Y Z
+Using a fourier grid of 28x28x28, spacing 0.109 0.109 0.109
+
+Estimate for the relative computational load of the PME mesh part: 0.99
+
+This run will generate roughly 0 Mb of data
+
+$ gmx mdrun -deffnm nvt -nt 28
+                      :-) GROMACS - gmx mdrun, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx mdrun -deffnm nvt -nt 28
+
+
+Back Off! I just backed up nvt.log to ./#nvt.log.1#
+Reading file nvt.tpr, VERSION 2025.2 (single precision)
+
+NOTE: Parallelization is limited by the small number of atoms,
+      only starting 1 thread-MPI ranks.
+      You can use the -nt and/or -ntmpi option to optimize the number of threads.
+
+Changing nstlist from 10 to 100, rlist from 1 to 1.081
+
+Update groups can not be used for this system because there are three or more consecutively coupled constraints
+
+Using 1 MPI thread
+Using 28 OpenMP threads 
+
+
+NOTE: The number of threads is not equal to the number of (logical) cpus
+      and the -pin option is set to auto: will not pin threads to cpus.
+      This can lead to significant performance degradation.
+      Consider using -pin on (and -pinoffset in case you run multiple jobs).
+
+Back Off! I just backed up nvt.trr to ./#nvt.trr.1#
+
+Back Off! I just backed up nvt.edr to ./#nvt.edr.1#
+starting mdrun 'Protein'
+50000 steps,    100.0 ps.
+
+Writing final coordinates.
+
+Back Off! I just backed up nvt.gro to ./#nvt.gro.1#
+
+               Core t (s)   Wall t (s)        (%)
+       Time:      271.277        9.689     2800.0
+                 (ns/day)    (hour/ns)
+Performance:      891.794        0.027
+
+GROMACS reminds you: "You Don't Wanna Know" (Pulp Fiction)
+
+
+$ gmx grompp -f npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt -p topol.top -o npt.tpr -maxwarn 1
+                      :-) GROMACS - gmx grompp, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx grompp -f npt.mdp -c nvt.gro -r nvt.gro -t nvt.cpt -p topol.top -o npt.tpr -maxwarn 1
+
+Generating 1-4 interactions: fudge = 0.5
+
+NOTE 1 [file unknown]:
+  You are using constraints on all bonds, whereas the forcefield has been
+  parametrized only with constraints involving hydrogen atoms. We suggest
+  using constraints = h-bonds instead, this will also improve performance.
+
+
+NOTE 2 [file unknown]:
+  You are combining position restraints with Parrinello-Rahman pressure
+  coupling, which can lead to instabilities. If you really want to combine
+  position restraints with pressure coupling, we suggest to use C-rescale
+  pressure coupling instead.
+
+Number of degrees of freedom in T-Coupling group System is 66.00
+
+NOTE 3 [file npt.mdp]:
+  Removing center of mass motion in the presence of position restraints
+  might cause artifacts. When you are using position restraints to
+  equilibrate a macro-molecule, the artifacts are usually negligible.
+
+
+Last frame         -1 time  100.000   
+
+NOTE 4 [file npt.mdp]:
+  The optimal PME mesh load for parallel simulations is below 0.5
+  and for highly parallel simulations between 0.25 and 0.33,
+  for higher performance, increase the cut-off and the PME grid spacing.
+
+
+
+There were 4 NOTEs
+
+Back Off! I just backed up npt.tpr to ./#npt.tpr.1#
+
+GROMACS reminds you: "You Don't Wanna Know" (Pulp Fiction)
+
+Setting the LD random seed to -403898625
+
+Generated 330891 of the 330891 non-bonded parameter combinations
+
+Generated 330891 of the 330891 1-4 parameter combinations
+
+Excluding 3 bonded neighbours molecule type 'Other'
+
+turning all bonds into constraints...
+
+Excluding 2 bonded neighbours molecule type 'SOL'
+
+turning all bonds into constraints...
+
+Taking velocities from 'nvt.gro'
+Analysing residue names:
+There are:     1      Other residues
+There are:     7      Water residues
+Analysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...
+
+The largest distance between excluded atoms is 0.350 nm between atom 1 and 9
+
+Determining Verlet buffer for a tolerance of 0.005 kJ/mol/ps at 300 K
+
+Calculated rlist for 1x1 atom pair-list as 1.014 nm, buffer size 0.014 nm
+
+Set rlist, assuming 4x4 atom pair-list, to 1.000 nm, buffer size 0.000 nm
+
+Note that mdrun will redetermine rlist based on the actual pair-list setup
+
+  rest:       	 1.511  1.578  1.638
+  rest:       	 1.511  1.578  1.638
+
+Reading Coordinates, Velocities and Box size from old trajectory
+
+Will read whole trajectory
+
+Using frame at t = 100 ps
+
+Starting time for run is 0 ps
+Calculating fourier grid dimensions for X Y Z
+Using a fourier grid of 28x28x28, spacing 0.109 0.109 0.109
+
+Estimate for the relative computational load of the PME mesh part: 0.99
+
+This run will generate roughly 0 Mb of data
+
+$ gmx mdrun -deffnm npt -nt 28
+                      :-) GROMACS - gmx mdrun, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx mdrun -deffnm npt -nt 28
+
+
+Back Off! I just backed up npt.log to ./#npt.log.1#
+Reading file npt.tpr, VERSION 2025.2 (single precision)
+
+NOTE: Parallelization is limited by the small number of atoms,
+      only starting 1 thread-MPI ranks.
+      You can use the -nt and/or -ntmpi option to optimize the number of threads.
+
+Changing nstlist from 10 to 100, rlist from 1 to 1.098
+
+Update groups can not be used for this system because there are three or more consecutively coupled constraints
+
+Using 1 MPI thread
+Using 28 OpenMP threads 
+
+
+NOTE: The number of threads is not equal to the number of (logical) cpus
+      and the -pin option is set to auto: will not pin threads to cpus.
+      This can lead to significant performance degradation.
+      Consider using -pin on (and -pinoffset in case you run multiple jobs).
+
+Back Off! I just backed up npt.trr to ./#npt.trr.1#
+
+Back Off! I just backed up npt.edr to ./#npt.edr.1#
+starting mdrun 'Protein'
+50000 steps,    100.0 ps.
+
+Step 24301 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 24351 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 24401 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 24451 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 24501 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 24551 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25001 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25051 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25101 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25151 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25201 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25251 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25301 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25351 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25401 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25451 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25601 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25651 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25701 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25751 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25801 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25851 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25901 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 25951 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26001 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26051 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26101 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26151 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26201 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26251 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26301 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26351 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26401 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26451 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26501 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26551 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26601 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26651 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26701 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26751 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26801 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26851 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26901 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 26951 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27001 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27051 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27101 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27151 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27201 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27251 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27301 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27351 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27401 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27451 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27501 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27551 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27601 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27651 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27701 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27751 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27801 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27851 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27901 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 27951 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28001 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28051 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28101 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28151 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28201 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28251 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28301 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28351 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28401 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28451 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28501 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28551 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28601 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28651 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28701 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28751 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28801 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28851 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28901 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 28951 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29001 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29051 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29101 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29151 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29201 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29251 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29301 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29351 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29401 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29451 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29501 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29551 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29601 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29651 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29701 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29751 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29801 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29851 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29901 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 29951 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 30001 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 30051 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Step 30101 Pressure scaling more than 1%. This may mean your system is not yet equilibrated. Use of Parrinello-Rahman pressure coupling during equilibration can lead to simulation instability, and is discouraged.
+
+Writing final coordinates.
+
+Back Off! I just backed up npt.gro to ./#npt.gro.1#
+
+               Core t (s)   Wall t (s)        (%)
+       Time:      228.196        8.150     2800.0
+                 (ns/day)    (hour/ns)
+Performance:     1060.153        0.023
+
+GROMACS reminds you: "... and that dream of dreams, a computational model that predicts everything accurately." (Roald Hoffmann)
+
+
+$ gmx grompp -f md.mdp -c npt.gro -r npt.gro -t npt.cpt -p topol.top -o md.tpr -maxwarn 2
+                      :-) GROMACS - gmx grompp, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx grompp -f md.mdp -c npt.gro -r npt.gro -t npt.cpt -p topol.top -o md.tpr -maxwarn 2
+
+Generating 1-4 interactions: fudge = 0.5
+
+NOTE 1 [file topol.top, line 166]:
+  The bond in molecule-type Other between atoms 1 N and 2 H1 has an
+  estimated oscillational period of 1.0e-02 ps, which is less than 10 times
+  the time step of 2.0e-03 ps.
+  Maybe you forgot to change the constraints mdp option.
+
+Number of degrees of freedom in T-Coupling group System is 78.00
+
+NOTE 2 [file md.mdp]:
+  Removing center of mass motion in the presence of position restraints
+  might cause artifacts. When you are using position restraints to
+  equilibrate a macro-molecule, the artifacts are usually negligible.
+
+
+Last frame         -1 time  100.000   
+
+NOTE 3 [file md.mdp]:
+  The optimal PME mesh load for parallel simulations is below 0.5
+  and for highly parallel simulations between 0.25 and 0.33,
+  for higher performance, increase the cut-off and the PME grid spacing.
+
+
+
+There were 3 NOTEs
+
+Back Off! I just backed up md.tpr to ./#md.tpr.1#
+
+GROMACS reminds you: "... and that dream of dreams, a computational model that predicts everything accurately." (Roald Hoffmann)
+
+Setting the LD random seed to -176425040
+
+Generated 330891 of the 330891 non-bonded parameter combinations
+
+Generated 330891 of the 330891 1-4 parameter combinations
+
+Excluding 3 bonded neighbours molecule type 'Other'
+
+Excluding 2 bonded neighbours molecule type 'SOL'
+
+Taking velocities from 'npt.gro'
+Analysing residue names:
+There are:     1      Other residues
+There are:     7      Water residues
+Analysing residues not classified as Protein/DNA/RNA/Water and splitting into groups...
+
+The largest distance between excluded atoms is 0.345 nm between atom 1 and 9
+
+Determining Verlet buffer for a tolerance of 0.005 kJ/mol/ps at 300 K
+
+Calculated rlist for 1x1 atom pair-list as 1.000 nm, buffer size 0.000 nm
+
+Set rlist, assuming 4x4 atom pair-list, to 1.000 nm, buffer size 0.000 nm
+
+Note that mdrun will redetermine rlist based on the actual pair-list setup
+
+Reading Coordinates, Velocities and Box size from old trajectory
+
+Will read whole trajectory
+
+Using frame at t = 100 ps
+
+Starting time for run is 0 ps
+Calculating fourier grid dimensions for X Y Z
+Using a fourier grid of 128x128x128, spacing 0.117 0.117 0.117
+
+Estimate for the relative computational load of the PME mesh part: 1.00
+
+This run will generate roughly 2 Mb of data
+
+$ gmx mdrun -deffnm md -v -nt 28
+                      :-) GROMACS - gmx mdrun, 2025.2 (-:
+
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/00_Alanine_zwitterion/simulations/case_001_sorted
+Command line:
+  gmx mdrun -deffnm md -v -nt 28
+
+
+Back Off! I just backed up md.log to ./#md.log.1#
+Reading file md.tpr, VERSION 2025.2 (single precision)
+
+NOTE: Parallelization is limited by the small number of atoms,
+      only starting 1 thread-MPI ranks.
+      You can use the -nt and/or -ntmpi option to optimize the number of threads.
+
+Changing nstlist from 10 to 80, rlist from 1 to 1.123
+
+Using 1 MPI thread
+Using 28 OpenMP threads 
+
+
+NOTE: The number of threads is not equal to the number of (logical) cpus
+      and the -pin option is set to auto: will not pin threads to cpus.
+      This can lead to significant performance degradation.
+      Consider using -pin on (and -pinoffset in case you run multiple jobs).
+
+Back Off! I just backed up md.trr to ./#md.trr.1#
+
+Back Off! I just backed up md.edr to ./#md.edr.1#
+starting mdrun 'Protein'
+500000 steps,   1000.0 ps.
+
+step 0
+step 100, will finish Sat May 17 05:24:37 2025
+step 200, will finish Sat May 17 05:24:12 2025
+step 300, will finish Sat May 17 05:24:10 2025
+step 400, will finish Sat May 17 05:24:11 2025
+step 500, will finish Sat May 17 05:24:10 2025
+step 600, will finish Sat May 17 05:24:11 2025
+step 700, will finish Sat May 17 05:24:10 2025
+step 800, will finish Sat May 17 05:24:11 2025
+step 900, will finish Sat May 17 05:24:11 2025
+step 1000, will finish Sat May 17 05:24:11 2025
+step 1100, will finish Sat May 17 05:24:11 2025
+step 1200, will finish Sat May 17 05:24:15 2025
+step 1300, will finish Sat May 17 05:24:17 2025
+step 1400, will finish Sat May 17 05:24:18 2025
+step 1500, will finish Sat May 17 05:24:20 2025
+step 1600, will finish Sat May 17 05:24:22 2025
+step 1700, will finish Sat May 17 05:24:23 2025
+step 1800, will finish Sat May 17 05:24:24 2025
+step 1900, will finish Sat May 17 05:24:25 2025
+step 2000, will finish Sat May 17 05:24:26 2025
+step 2100, will finish Sat May 17 05:24:25 2025
+step 2200, will finish Sat May 17 05:24:24 2025
+step 2300, will finish Sat May 17 05:24:23 2025
+step 2400, will finish Sat May 17 05:24:23 2025
+step 2500, will finish Sat May 17 05:24:22 2025
+step 2600, will finish Sat May 17 05:24:22 2025
+step 2700, will finish Sat May 17 05:24:21 2025
+step 2800, will finish Sat May 17 05:24:21 2025
+step 2900, will finish Sat May 17 05:24:20 2025
+step 3000, will finish Sat May 17 05:24:19 2025
+step 3100, will finish Sat May 17 05:24:19 2025
+step 3200, will finish Sat May 17 05:24:19 2025
+step 3300, will finish Sat May 17 05:24:18 2025
+step 3400, will finish Sat May 17 05:24:18 2025
+step 3500, will finish Sat May 17 05:24:16 2025
+step 3600, will finish Sat May 17 05:24:15 2025
+step 3700, will finish Sat May 17 05:24:13 2025
+step 3800, will finish Sat May 17 05:24:12 2025
+step 3900, will finish Sat May 17 05:24:10 2025
+step 4000, will finish Sat May 17 05:24:09 2025
+step 4100, will finish Sat May 17 05:24:08 2025
+step 4200, will finish Sat May 17 05:24:07 2025
+step 4300, will finish Sat May 17 05:24:06 2025
+step 4400, will finish Sat May 17 05:24:04 2025
+step 4500, will finish Sat May 17 05:24:03 2025
+step 4600, will finish Sat May 17 05:24:02 2025
+step 4700, will finish Sat May 17 05:24:01 2025
+step 4800, will finish Sat May 17 05:24:01 2025
+step 4900, will finish Sat May 17 05:24:00 2025
+step 5000, will finish Sat May 17 05:23:59 2025
+step 5100, will finish Sat May 17 05:23:58 2025
+step 5200, will finish Sat May 17 05:23:57 2025
+step 5300, will finish Sat May 17 05:23:56 2025
+step 5400, will finish Sat May 17 05:23:56 2025
+step 5500, will finish Sat May 17 05:23:55 2025
+step 5600, will finish Sat May 17 05:23:54 2025
+step 5700, will finish Sat May 17 05:23:54 2025
+step 5800, will finish Sat May 17 05:23:53 2025
+step 5900, will finish Sat May 17 05:23:53 2025
+step 6000, will finish Sat May 17 05:23:52 2025
+step 6100, will finish Sat May 17 05:23:52 2025
+step 6200, will finish Sat May 17 05:23:51 2025
+step 6300, will finish Sat May 17 05:23:51 2025
+step 6400, will finish Sat May 17 05:23:50 2025
+step 6500, will finish Sat May 17 05:23:50 2025
+step 6600, will finish Sat May 17 05:23:49 2025
+step 6700, will finish Sat May 17 05:23:49 2025
+step 6800, will finish Sat May 17 05:23:48 2025
+step 6900, will finish Sat May 17 05:23:48 2025
+step 7000, will finish Sat May 17 05:23:47 2025
+step 7100, will finish Sat May 17 05:23:47 2025
+step 7200, will finish Sat May 17 05:23:47 2025
+step 7300, will finish Sat May 17 05:23:46 2025
+step 7400, will finish Sat May 17 05:23:46 2025
+step 7500, will finish Sat May 17 05:23:45 2025
+step 7600, will finish Sat May 17 05:23:45 2025
+step 7700, will finish Sat May 17 05:23:45 2025
+step 7800, will finish Sat May 17 05:23:44 2025
+step 7900, will finish Sat May 17 05:23:44 2025
+step 8000, will finish Sat May 17 05:23:44 2025
+step 8100, will finish Sat May 17 05:23:43 2025
+step 8200, will finish Sat May 17 05:23:43 2025
+step 8300, will finish Sat May 17 05:23:43 2025
+step 8400, will finish Sat May 17 05:23:42 2025
+step 8500, will finish Sat May 17 05:23:42 2025
+step 8600, will finish Sat May 17 05:23:42 2025
+step 8700, will finish Sat May 17 05:23:41 2025
+step 8800, will finish Sat May 17 05:23:41 2025
+step 8900, will finish Sat May 17 05:23:41 2025
+step 9000, will finish Sat May 17 05:23:41 2025
+step 9100, will finish Sat May 17 05:23:40 2025
+step 9200, will finish Sat May 17 05:23:40 2025
+step 9300, will finish Sat May 17 05:23:40 2025
+step 9400, will finish Sat May 17 05:23:40 2025
+step 9500, will finish Sat May 17 05:23:40 2025
+step 9600, will finish Sat May 17 05:23:40 2025
+step 9700, will finish Sat May 17 05:23:40 2025
+step 9800, will finish Sat May 17 05:23:40 2025
+step 9900, will finish Sat May 17 05:23:40 2025
+step 10000, will finish Sat May 17 05:23:40 2025
+step 10100, will finish Sat May 17 05:23:40 2025
+step 10200, will finish Sat May 17 05:23:39 2025
+step 10300, will finish Sat May 17 05:23:39 2025
+step 10400, will finish Sat May 17 05:23:39 2025
+step 10500, will finish Sat May 17 05:23:39 2025
+step 10600, will finish Sat May 17 05:23:39 2025
+step 10700, will finish Sat May 17 05:23:38 2025
+step 10800, will finish Sat May 17 05:23:38 2025
+step 10900, will finish Sat May 17 05:23:38 2025
+step 11000, will finish Sat May 17 05:23:38 2025
+step 11100, will finish Sat May 17 05:23:38 2025
+step 11200, will finish Sat May 17 05:23:37 2025
+step 11300, will finish Sat May 17 05:23:37 2025
+step 11400, will finish Sat May 17 05:23:37 2025
+step 11500, will finish Sat May 17 05:23:37 2025
+step 11600, will finish Sat May 17 05:23:37 2025
+step 11700, will finish Sat May 17 05:23:37 2025
+step 11800, will finish Sat May 17 05:23:37 2025
+step 11900, will finish Sat May 17 05:23:37 2025
+step 12000, will finish Sat May 17 05:23:36 2025
+step 12100, will finish Sat May 17 05:23:36 2025
+step 12200, will finish Sat May 17 05:23:36 2025
+step 12300, will finish Sat May 17 05:23:36 2025
+step 12400, will finish Sat May 17 05:23:36 2025
+step 12500, will finish Sat May 17 05:23:36 2025
+step 12600, will finish Sat May 17 05:23:36 2025
+step 12700, will finish Sat May 17 05:23:36 2025
+step 12800, will finish Sat May 17 05:23:35 2025
+step 12900, will finish Sat May 17 05:23:35 2025
+step 13000, will finish Sat May 17 05:23:35 2025
+step 13100, will finish Sat May 17 05:23:35 2025
+step 13200, will finish Sat May 17 05:23:35 2025
+step 13300, will finish Sat May 17 05:23:35 2025
+step 13400, will finish Sat May 17 05:23:35 2025
+step 13500, will finish Sat May 17 05:23:34 2025
+step 13600, will finish Sat May 17 05:23:34 2025
+step 13700, will finish Sat May 17 05:23:34 2025
+step 13800, will finish Sat May 17 05:23:34 2025
+step 13900, will finish Sat May 17 05:23:34 2025
+step 14000, will finish Sat May 17 05:23:34 2025
+step 14100, will finish Sat May 17 05:23:34 2025
+step 14200, will finish Sat May 17 05:23:34 2025
+step 14300, will finish Sat May 17 05:23:34 2025
+step 14400, will finish Sat May 17 05:23:33 2025
+step 14500, will finish Sat May 17 05:23:33 2025
+step 14600, will finish Sat May 17 05:23:33 2025
+step 14700, will finish Sat May 17 05:23:33 2025
+step 14800, will finish Sat May 17 05:23:33 2025
+step 14900, will finish Sat May 17 05:23:33 2025
+step 15000, will finish Sat May 17 05:23:33 2025
+step 15100, will finish Sat May 17 05:23:33 2025
+step 15200, will finish Sat May 17 05:23:33 2025
+step 15300, will finish Sat May 17 05:23:33 2025
+step 15400, will finish Sat May 17 05:23:33 2025
+step 15500, will finish Sat May 17 05:23:33 2025
+step 15600, will finish Sat May 17 05:23:33 2025
+step 15700, will finish Sat May 17 05:23:33 2025
+step 15800, will finish Sat May 17 05:23:33 2025
+step 15900, will finish Sat May 17 05:23:33 2025
+step 16000, will finish Sat May 17 05:23:33 2025
+step 16100, will finish Sat May 17 05:23:33 2025
+step 16200, will finish Sat May 17 05:23:32 2025
+step 16300, will finish Sat May 17 05:23:32 2025
+step 16400, will finish Sat May 17 05:23:32 2025
+step 16500, will finish Sat May 17 05:23:32 2025
+step 16600, will finish Sat May 17 05:23:32 2025
+step 16700, will finish Sat May 17 05:23:32 2025
+step 16800, will finish Sat May 17 05:23:32 2025
+step 16900, will finish Sat May 17 05:23:32 2025
+step 17000, will finish Sat May 17 05:23:32 2025
+step 17100, will finish Sat May 17 05:23:32 2025
+step 17200, will finish Sat May 17 05:23:32 2025
+step 17300, will finish Sat May 17 05:23:32 2025
+step 17400, will finish Sat May 17 05:23:32 2025
+step 17500, will finish Sat May 17 05:23:31 2025
+step 17600, will finish Sat May 17 05:23:31 2025
+step 17700, will finish Sat May 17 05:23:31 2025
+step 17800, will finish Sat May 17 05:23:31 2025
+step 17900, will finish Sat May 17 05:23:31 2025
+step 18000, will finish Sat May 17 05:23:31 2025
+step 18100, will finish Sat May 17 05:23:31 2025
+step 18200, will finish Sat May 17 05:23:31 2025
+step 18300, will finish Sat May 17 05:23:31 2025
+step 18400, will finish Sat May 17 05:23:31 2025
+step 18500, will finish Sat May 17 05:23:31 2025
+step 18600, will finish Sat May 17 05:23:31 2025
+step 18700, will finish Sat May 17 05:23:31 2025
+step 18800, will finish Sat May 17 05:23:31 2025
+step 18900, will finish Sat May 17 05:23:31 2025
+step 19000, will finish Sat May 17 05:23:30 2025
+step 19100, will finish Sat May 17 05:23:30 2025
+step 19200, will finish Sat May 17 05:23:30 2025
+step 19300, will finish Sat May 17 05:23:30 2025
+step 19400, will finish Sat May 17 05:23:30 2025
+step 19500, will finish Sat May 17 05:23:30 2025
+step 19600, will finish Sat May 17 05:23:30 2025
+step 19700, will finish Sat May 17 05:23:30 2025
+step 19800, will finish Sat May 17 05:23:30 2025
+step 19900, will finish Sat May 17 05:23:30 2025
+step 20000, will finish Sat May 17 05:23:30 2025
+step 20100, will finish Sat May 17 05:23:30 2025
+step 20200, will finish Sat May 17 05:23:30 2025
+step 20300, will finish Sat May 17 05:23:30 2025
+step 20400, will finish Sat May 17 05:23:30 2025
+step 20500, will finish Sat May 17 05:23:30 2025
+step 20600, will finish Sat May 17 05:23:30 2025
+step 20700, will finish Sat May 17 05:23:29 2025
+step 20800, will finish Sat May 17 05:23:29 2025
+step 20900, will finish Sat May 17 05:23:29 2025
+step 21000, will finish Sat May 17 05:23:29 2025
+step 21100, will finish Sat May 17 05:23:29 2025
+step 21200, will finish Sat May 17 05:23:29 2025
+step 21300, will finish Sat May 17 05:23:29 2025
+step 21400, will finish Sat May 17 05:23:29 2025
+step 21500, will finish Sat May 17 05:23:29 2025
+step 21600, will finish Sat May 17 05:23:29 2025
+step 21700, will finish Sat May 17 05:23:29 2025
+step 21800, will finish Sat May 17 05:23:29 2025
+step 21900, will finish Sat May 17 05:23:29 2025
+step 22000, will finish Sat May 17 05:23:29 2025
+step 22100, will finish Sat May 17 05:23:29 2025
+step 22200, will finish Sat May 17 05:23:29 2025
+step 22300, will finish Sat May 17 05:23:29 2025
+step 22400, will finish Sat May 17 05:23:29 2025
+step 22500, will finish Sat May 17 05:23:29 2025
+step 22600, will finish Sat May 17 05:23:29 2025
+step 22700, will finish Sat May 17 05:23:28 2025
+step 22800, will finish Sat May 17 05:23:28 2025
+step 22900, will finish Sat May 17 05:23:28 2025
+step 23000, will finish Sat May 17 05:23:28 2025
+step 23100, will finish Sat May 17 05:23:28 2025
+step 23200, will finish Sat May 17 05:23:28 2025
+step 23300, will finish Sat May 17 05:23:28 2025
+step 23400, will finish Sat May 17 05:23:28 2025
+step 23500, will finish Sat May 17 05:23:28 2025
+step 23600, will finish Sat May 17 05:23:28 2025
+step 23700, will finish Sat May 17 05:23:28 2025
+step 23800, will finish Sat May 17 05:23:28 2025
+step 23900, will finish Sat May 17 05:23:28 2025
+step 24000, will finish Sat May 17 05:23:28 2025
+step 24100, will finish Sat May 17 05:23:28 2025
+step 24200, will finish Sat May 17 05:23:28 2025
+step 24300, will finish Sat May 17 05:23:28 2025
+step 24400, will finish Sat May 17 05:23:28 2025
+step 24500, will finish Sat May 17 05:23:28 2025
+step 24600, will finish Sat May 17 05:23:28 2025
+step 24700, will finish Sat May 17 05:23:28 2025
+step 24800, will finish Sat May 17 05:23:27 2025
+step 24900, will finish Sat May 17 05:23:27 2025
+step 25000, will finish Sat May 17 05:23:27 2025
+step 25100, will finish Sat May 17 05:23:27 2025
+step 25200, will finish Sat May 17 05:23:27 2025
+step 25300, will finish Sat May 17 05:23:27 2025
+step 25400, will finish Sat May 17 05:23:27 2025
+step 25500, will finish Sat May 17 05:23:27 2025
+step 25600, will finish Sat May 17 05:23:27 2025
+step 25700, will finish Sat May 17 05:23:27 2025
+step 25800, will finish Sat May 17 05:23:27 2025
+step 25900, will finish Sat May 17 05:23:27 2025
+step 26000, will finish Sat May 17 05:23:27 2025
+step 26100, will finish Sat May 17 05:23:27 2025
+step 26200, will finish Sat May 17 05:23:27 2025
+step 26300, will finish Sat May 17 05:23:27 2025
+step 26400, will finish Sat May 17 05:23:27 2025
+step 26500, will finish Sat May 17 05:23:27 2025
+step 26600, will finish Sat May 17 05:23:27 2025
+step 26700, will finish Sat May 17 05:23:27 2025
+step 26800, will finish Sat May 17 05:23:27 2025
+step 26900, will finish Sat May 17 05:23:27 2025
+step 27000, will finish Sat May 17 05:23:27 2025
+step 27100, will finish Sat May 17 05:23:27 2025
+step 27200, will finish Sat May 17 05:23:27 2025
+step 27300, will finish Sat May 17 05:23:26 2025
+step 27400, will finish Sat May 17 05:23:26 2025
+step 27500, will finish Sat May 17 05:23:26 2025
+step 27600, will finish Sat May 17 05:23:26 2025
+step 27700, will finish Sat May 17 05:23:26 2025
+step 27800, will finish Sat May 17 05:23:26 2025
+step 27900, will finish Sat May 17 05:23:26 2025
+step 28000, will finish Sat May 17 05:23:26 2025
+step 28100, will finish Sat May 17 05:23:26 2025
+step 28200, will finish Sat May 17 05:23:26 2025
+step 28300, will finish Sat May 17 05:23:26 2025
+step 28400, will finish Sat May 17 05:23:26 2025
+step 28500, will finish Sat May 17 05:23:26 2025
+step 28600, will finish Sat May 17 05:23:26 2025
+step 28700, will finish Sat May 17 05:23:26 2025
+step 28800, will finish Sat May 17 05:23:26 2025
+step 28900, will finish Sat May 17 05:23:26 2025
+step 29000, will finish Sat May 17 05:23:26 2025
+step 29100, will finish Sat May 17 05:23:26 2025
+step 29200, will finish Sat May 17 05:23:26 2025
+step 29300, will finish Sat May 17 05:23:26 2025
+step 29400, will finish Sat May 17 05:23:26 2025
+step 29500, will finish Sat May 17 05:23:26 2025
+step 29600, will finish Sat May 17 05:23:26 2025
+step 29700, will finish Sat May 17 05:23:26 2025
+step 29800, will finish Sat May 17 05:23:26 2025
+step 29900, will finish Sat May 17 05:23:26 2025
+step 30000, will finish Sat May 17 05:23:26 2025
+step 30100, will finish Sat May 17 05:23:26 2025
+step 30200, will finish Sat May 17 05:23:26 2025
+step 30300, will finish Sat May 17 05:23:25 2025
+step 30400, will finish Sat May 17 05:23:25 2025
+step 30500, will finish Sat May 17 05:23:25 2025
+step 30600, will finish Sat May 17 05:23:25 2025
+step 30700, will finish Sat May 17 05:23:25 2025
+step 30800, will finish Sat May 17 05:23:25 2025
+step 30900, will finish Sat May 17 05:23:25 2025
+step 31000, will finish Sat May 17 05:23:25 2025
+step 31100, will finish Sat May 17 05:23:25 2025
+step 31200, will finish Sat May 17 05:23:25 2025
+step 31300, will finish Sat May 17 05:23:25 2025
+step 31400, will finish Sat May 17 05:23:25 2025
+step 31500, will finish Sat May 17 05:23:25 2025
+step 31600, will finish Sat May 17 05:23:25 2025
+step 31700, will finish Sat May 17 05:23:25 2025
+step 31800, will finish Sat May 17 05:23:25 2025
+step 31900, will finish Sat May 17 05:23:25 2025
+step 32000, will finish Sat May 17 05:23:25 2025
+step 32100, will finish Sat May 17 05:23:25 2025
+step 32200, will finish Sat May 17 05:23:25 2025
+step 32300, will finish Sat May 17 05:23:25 2025
+step 32400, will finish Sat May 17 05:23:25 2025
+step 32500, will finish Sat May 17 05:23:25 2025
+step 32600, will finish Sat May 17 05:23:25 2025
+step 32700, will finish Sat May 17 05:23:25 2025
+step 32800, will finish Sat May 17 05:23:25 2025
+step 32900, will finish Sat May 17 05:23:25 2025
+step 33000, will finish Sat May 17 05:23:25 2025
+step 33100, will finish Sat May 17 05:23:25 2025
+step 33200, will finish Sat May 17 05:23:25 2025
+step 33300, will finish Sat May 17 05:23:25 2025
+step 33400, will finish Sat May 17 05:23:25 2025
+step 33500, will finish Sat May 17 05:23:25 2025
+step 33600, will finish Sat May 17 05:23:25 2025
+step 33700, will finish Sat May 17 05:23:25 2025
+step 33800, will finish Sat May 17 05:23:25 2025
+step 33900, will finish Sat May 17 05:23:25 2025
+step 34000, will finish Sat May 17 05:23:25 2025
+step 34100, will finish Sat May 17 05:23:25 2025
+step 34200, will finish Sat May 17 05:23:25 2025
+step 34300, will finish Sat May 17 05:23:25 2025
+step 34400, will finish Sat May 17 05:23:25 2025
+step 34500, will finish Sat May 17 05:23:25 2025
+step 34600, will finish Sat May 17 05:23:25 2025
+step 34700, will finish Sat May 17 05:23:25 2025
+step 34800, will finish Sat May 17 05:23:25 2025
+step 34900, will finish Sat May 17 05:23:25 2025
+step 35000, will finish Sat May 17 05:23:25 2025
+step 35100, will finish Sat May 17 05:23:25 2025
+step 35200, will finish Sat May 17 05:23:25 2025
+step 35300, will finish Sat May 17 05:23:25 2025
+step 35400, will finish Sat May 17 05:23:25 2025
+step 35500, will finish Sat May 17 05:23:25 2025
+step 35600, will finish Sat May 17 05:23:25 2025
+step 35700, will finish Sat May 17 05:23:25 2025
+step 35800, will finish Sat May 17 05:23:25 2025
+step 35900, will finish Sat May 17 05:23:25 2025
+step 36000, will finish Sat May 17 05:23:25 2025
+step 36100, will finish Sat May 17 05:23:25 2025
+step 36200, will finish Sat May 17 05:23:25 2025
+step 36300, will finish Sat May 17 05:23:25 2025
+step 36400, will finish Sat May 17 05:23:25 2025
+step 36500, will finish Sat May 17 05:23:25 2025
+step 36600, will finish Sat May 17 05:23:25 2025
+step 36700, will finish Sat May 17 05:23:25 2025
+step 36800, will finish Sat May 17 05:23:25 2025
+step 36900, will finish Sat May 17 05:23:25 2025
+step 37000, will finish Sat May 17 05:23:25 2025
+step 37100, will finish Sat May 17 05:23:25 2025
+step 37200, will finish Sat May 17 05:23:25 2025
+step 37300, will finish Sat May 17 05:23:25 2025
+step 37400, will finish Sat May 17 05:23:25 2025
+step 37500, will finish Sat May 17 05:23:25 2025
+step 37600, will finish Sat May 17 05:23:25 2025
+step 37700, will finish Sat May 17 05:23:25 2025
+step 37800, will finish Sat May 17 05:23:25 2025
+step 37900, will finish Sat May 17 05:23:25 2025
+step 38000, will finish Sat May 17 05:23:25 2025
+step 38100, will finish Sat May 17 05:23:24 2025
+step 38200, will finish Sat May 17 05:23:24 2025
+step 38300, will finish Sat May 17 05:23:24 2025
+step 38400, will finish Sat May 17 05:23:24 2025
+step 38500, will finish Sat May 17 05:23:24 2025
+step 38600, will finish Sat May 17 05:23:24 2025
+step 38700, will finish Sat May 17 05:23:24 2025
+step 38800, will finish Sat May 17 05:23:24 2025
+step 38900, will finish Sat May 17 05:23:24 2025
+step 39000, will finish Sat May 17 05:23:24 2025
+step 39100, will finish Sat May 17 05:23:24 2025
+step 39200, will finish Sat May 17 05:23:24 2025
+step 39300, will finish Sat May 17 05:23:24 2025
+step 39400, will finish Sat May 17 05:23:24 2025
+step 39500, will finish Sat May 17 05:23:24 2025
+step 39600, will finish Sat May 17 05:23:24 2025
+step 39700, will finish Sat May 17 05:23:24 2025
+step 39800, will finish Sat May 17 05:23:24 2025
+step 39900, will finish Sat May 17 05:23:24 2025
+step 40000, will finish Sat May 17 05:23:24 2025
+step 40100, will finish Sat May 17 05:23:24 2025
+step 40200, will finish Sat May 17 05:23:24 2025
+step 40300, will finish Sat May 17 05:23:24 2025
+step 40400, will finish Sat May 17 05:23:24 2025
+step 40500, will finish Sat May 17 05:23:24 2025
+step 40600, will finish Sat May 17 05:23:24 2025
+step 40700, will finish Sat May 17 05:23:24 2025
+step 40800, will finish Sat May 17 05:23:24 2025
+step 40900, will finish Sat May 17 05:23:24 2025
+step 41000, will finish Sat May 17 05:23:24 2025
+step 41100, will finish Sat May 17 05:23:24 2025
+step 41200, will finish Sat May 17 05:23:24 2025
+step 41300, will finish Sat May 17 05:23:24 2025
+step 41400, will finish Sat May 17 05:23:24 2025
+step 41500, will finish Sat May 17 05:23:24 2025
+step 41600, will finish Sat May 17 05:23:24 2025
+step 41700, will finish Sat May 17 05:23:24 2025
+step 41800, will finish Sat May 17 05:23:24 2025
+step 41900, will finish Sat May 17 05:23:24 2025
+step 42000, will finish Sat May 17 05:23:24 2025
+step 42100, will finish Sat May 17 05:23:24 2025
+step 42200, will finish Sat May 17 05:23:24 2025
+step 42300, will finish Sat May 17 05:23:24 2025
+step 42400, will finish Sat May 17 05:23:24 2025
+step 42500, will finish Sat May 17 05:23:24 2025
+step 42600, will finish Sat May 17 05:23:24 2025
+step 42700, will finish Sat May 17 05:23:24 2025
+step 42800, will finish Sat May 17 05:23:24 2025
+step 42900, will finish Sat May 17 05:23:24 2025
+step 43000, will finish Sat May 17 05:23:24 2025
+step 43100, will finish Sat May 17 05:23:24 2025
+step 43200, will finish Sat May 17 05:23:24 2025
+step 43300, will finish Sat May 17 05:23:24 2025
+step 43400, will finish Sat May 17 05:23:24 2025
+step 43500, will finish Sat May 17 05:23:24 2025
+step 43600, will finish Sat May 17 05:23:24 2025
+step 43700, will finish Sat May 17 05:23:24 2025
+step 43800, will finish Sat May 17 05:23:23 2025
+step 43900, will finish Sat May 17 05:23:23 2025
+step 44000, will finish Sat May 17 05:23:23 2025
+step 44100, will finish Sat May 17 05:23:23 2025
+step 44200, will finish Sat May 17 05:23:23 2025
+step 44300, will finish Sat May 17 05:23:23 2025
+step 44400, will finish Sat May 17 05:23:23 2025
+step 44500, will finish Sat May 17 05:23:23 2025
+step 44600, will finish Sat May 17 05:23:22 2025
+step 44700, will finish Sat May 17 05:23:22 2025
+step 44800, will finish Sat May 17 05:23:22 2025
+step 44900, will finish Sat May 17 05:23:22 2025
+step 45000, will finish Sat May 17 05:23:22 2025
+step 45100, will finish Sat May 17 05:23:21 2025
+step 45200, will finish Sat May 17 05:23:21 2025
+step 45300, will finish Sat May 17 05:23:21 2025
+step 45400, will finish Sat May 17 05:23:21 2025
+step 45500, will finish Sat May 17 05:23:21 2025
+step 45600, will finish Sat May 17 05:23:20 2025
+step 45700, will finish Sat May 17 05:23:20 2025
+step 45800, will finish Sat May 17 05:23:20 2025
+step 45900, will finish Sat May 17 05:23:20 2025
+step 46000, will finish Sat May 17 05:23:20 2025
+step 46100, will finish Sat May 17 05:23:19 2025
+step 46200, will finish Sat May 17 05:23:19 2025
+step 46300, will finish Sat May 17 05:23:19 2025
+step 46400, will finish Sat May 17 05:23:19 2025
+step 46500, will finish Sat May 17 05:23:19 2025
+step 46600, will finish Sat May 17 05:23:18 2025
+step 46700, will finish Sat May 17 05:23:18 2025
+step 46800, will finish Sat May 17 05:23:18 2025
+step 46900, will finish Sat May 17 05:23:18 2025
+step 47000, will finish Sat May 17 05:23:18 2025
+step 47100, will finish Sat May 17 05:23:18 2025
+step 47200, will finish Sat May 17 05:23:17 2025
+step 47300, will finish Sat May 17 05:23:17 2025
+step 47400, will finish Sat May 17 05:23:17 2025
+step 47500, will finish Sat May 17 05:23:17 2025
+step 47600, will finish Sat May 17 05:23:17 2025
+step 47700, will finish Sat May 17 05:23:16 2025
+step 47800, will finish Sat May 17 05:23:16 2025
+step 47900, will finish Sat May 17 05:23:16 2025
+step 48000, will finish Sat May 17 05:23:16 2025
+step 48100, will finish Sat May 17 05:23:16 2025
+step 48200, will finish Sat May 17 05:23:15 2025
+step 48300, will finish Sat May 17 05:23:15 2025
+step 48400, will finish Sat May 17 05:23:15 2025
+step 48500, will finish Sat May 17 05:23:15 2025
+step 48600, will finish Sat May 17 05:23:15 2025
+step 48700, will finish Sat May 17 05:23:15 2025
+step 48800, will finish Sat May 17 05:23:14 2025
+step 48900, will finish Sat May 17 05:23:14 2025
+step 49000, will finish Sat May 17 05:23:14 2025
+step 49100, will finish Sat May 17 05:23:14 2025
+step 49200, will finish Sat May 17 05:23:14 2025
+step 49300, will finish Sat May 17 05:23:13 2025
+step 49400, will finish Sat May 17 05:23:13 2025
+step 49500, will finish Sat May 17 05:23:13 2025
+step 49600, will finish Sat May 17 05:23:13 2025
+step 49700, will finish Sat May 17 05:23:13 2025
+step 49800, will finish Sat May 17 05:23:13 2025
+step 49900, will finish Sat May 17 05:23:13 2025
+step 50000, will finish Sat May 17 05:23:12 2025
+step 50100, will finish Sat May 17 05:23:12 2025
+step 50200, will finish Sat May 17 05:23:12 2025
+step 50300, will finish Sat May 17 05:23:12 2025
+step 50400, will finish Sat May 17 05:23:12 2025
+step 50500, will finish Sat May 17 05:23:12 2025
+step 50600, will finish Sat May 17 05:23:12 2025
+step 50700, will finish Sat May 17 05:23:12 2025
+step 50800, will finish Sat May 17 05:23:12 2025
+step 50900, will finish Sat May 17 05:23:12 2025
+step 51000, will finish Sat May 17 05:23:12 2025
+step 51100, will finish Sat May 17 05:23:12 2025
+step 51200, will finish Sat May 17 05:23:12 2025
+step 51300, will finish Sat May 17 05:23:12 2025
+step 51400, will finish Sat May 17 05:23:12 2025
+step 51500, will finish Sat May 17 05:23:12 2025
+step 51600, will finish Sat May 17 05:23:12 2025
+step 51700, will finish Sat May 17 05:23:12 2025
+step 51800, will finish Sat May 17 05:23:12 2025
+step 51900, will finish Sat May 17 05:23:12 2025
+step 52000, will finish Sat May 17 05:23:12 2025
+step 52100, will finish Sat May 17 05:23:12 2025
+step 52200, will finish Sat May 17 05:23:12 2025
+step 52300, will finish Sat May 17 05:23:12 2025
+step 52400, will finish Sat May 17 05:23:12 2025
+step 52500, will finish Sat May 17 05:23:12 2025
+step 52600, will finish Sat May 17 05:23:12 2025
+step 52700, will finish Sat May 17 05:23:12 2025
+step 52800, will finish Sat May 17 05:23:12 2025
+step 52900, will finish Sat May 17 05:23:12 2025
+step 53000, will finish Sat May 17 05:23:12 2025
+step 53100, will finish Sat May 17 05:23:11 2025
+step 53200, will finish Sat May 17 05:23:11 2025
+step 53300, will finish Sat May 17 05:23:11 2025
+step 53400, will finish Sat May 17 05:23:11 2025
+step 53500, will finish Sat May 17 05:23:11 2025
+step 53600, will finish Sat May 17 05:23:11 2025
+step 53700, will finish Sat May 17 05:23:11 2025
+step 53800, will finish Sat May 17 05:23:11 2025
+step 53900, will finish Sat May 17 05:23:11 2025
+step 54000, will finish Sat May 17 05:23:11 2025
+step 54100, will finish Sat May 17 05:23:11 2025
+step 54200, will finish Sat May 17 05:23:11 2025
+step 54300, will finish Sat May 17 05:23:11 2025
+step 54400, will finish Sat May 17 05:23:11 2025
+step 54500, will finish Sat May 17 05:23:11 2025
+step 54600, will finish Sat May 17 05:23:11 2025
+step 54700, will finish Sat May 17 05:23:11 2025
+step 54800, will finish Sat May 17 05:23:11 2025
+step 54900, will finish Sat May 17 05:23:11 2025
+step 55000, will finish Sat May 17 05:23:11 2025
+step 55100, will finish Sat May 17 05:23:11 2025
+step 55200, will finish Sat May 17 05:23:11 2025
+step 55300, will finish Sat May 17 05:23:11 2025
+step 55400, will finish Sat May 17 05:23:11 2025
+step 55500, will finish Sat May 17 05:23:11 2025
+step 55600, will finish Sat May 17 05:23:11 2025
+step 55700, will finish Sat May 17 05:23:11 2025
+step 55800, will finish Sat May 17 05:23:11 2025
+step 55900, will finish Sat May 17 05:23:11 2025
+step 56000, will finish Sat May 17 05:23:11 2025
+step 56100, will finish Sat May 17 05:23:11 2025
+step 56200, will finish Sat May 17 05:23:11 2025
+step 56300, will finish Sat May 17 05:23:11 2025
+step 56400, will finish Sat May 17 05:23:11 2025
+step 56500, will finish Sat May 17 05:23:11 2025
+step 56600, will finish Sat May 17 05:23:11 2025
+step 56700, will finish Sat May 17 05:23:11 2025
+step 56800, will finish Sat May 17 05:23:11 2025
+step 56900, will finish Sat May 17 05:23:11 2025
+step 57000, will finish Sat May 17 05:23:11 2025
+step 57100, will finish Sat May 17 05:23:11 2025
+step 57200, will finish Sat May 17 05:23:11 2025
+step 57300, will finish Sat May 17 05:23:11 2025
+step 57400, will finish Sat May 17 05:23:11 2025
+step 57500, will finish Sat May 17 05:23:11 2025
+step 57600, will finish Sat May 17 05:23:11 2025
+step 57700, will finish Sat May 17 05:23:10 2025
+step 57800, will finish Sat May 17 05:23:10 2025
+step 57900, will finish Sat May 17 05:23:10 2025
+step 58000, will finish Sat May 17 05:23:10 2025
+step 58100, will finish Sat May 17 05:23:10 2025
+step 58200, will finish Sat May 17 05:23:10 2025
+step 58300, will finish Sat May 17 05:23:10 2025
+step 58400, will finish Sat May 17 05:23:10 2025
+step 58500, will finish Sat May 17 05:23:10 2025
+step 58600, will finish Sat May 17 05:23:10 2025
+step 58700, will finish Sat May 17 05:23:10 2025
+step 58800, will finish Sat May 17 05:23:10 2025
+step 58900, will finish Sat May 17 05:23:10 2025
+step 59000, will finish Sat May 17 05:23:10 2025
+step 59100, will finish Sat May 17 05:23:10 2025
+step 59200, will finish Sat May 17 05:23:10 2025
+step 59300, will finish Sat May 17 05:23:10 2025
+step 59400, will finish Sat May 17 05:23:10 2025
+step 59500, will finish Sat May 17 05:23:10 2025
+step 59600, will finish Sat May 17 05:23:10 2025
+step 59700, will finish Sat May 17 05:23:10 2025
+step 59800, will finish Sat May 17 05:23:10 2025
+step 59900, will finish Sat May 17 05:23:10 2025
+step 60000, will finish Sat May 17 05:23:10 2025
+step 60100, will finish Sat May 17 05:23:10 2025
+step 60200, will finish Sat May 17 05:23:10 2025
+step 60300, will finish Sat May 17 05:23:10 2025
+step 60400, will finish Sat May 17 05:23:10 2025
+step 60500, will finish Sat May 17 05:23:10 2025
+step 60600, will finish Sat May 17 05:23:10 2025
+step 60700, will finish Sat May 17 05:23:10 2025
+step 60800, will finish Sat May 17 05:23:10 2025
+step 60900, will finish Sat May 17 05:23:10 2025
+step 61000, will finish Sat May 17 05:23:10 2025
+step 61100, will finish Sat May 17 05:23:10 2025
+step 61200, will finish Sat May 17 05:23:10 2025
+step 61300, will finish Sat May 17 05:23:10 2025
+step 61400, will finish Sat May 17 05:23:10 2025
+step 61500, will finish Sat May 17 05:23:10 2025
+step 61600, will finish Sat May 17 05:23:10 2025
+step 61700, will finish Sat May 17 05:23:10 2025
+step 61800, will finish Sat May 17 05:23:10 2025
+step 61900, will finish Sat May 17 05:23:10 2025
+step 62000, will finish Sat May 17 05:23:10 2025
+step 62100, will finish Sat May 17 05:23:10 2025
+step 62200, will finish Sat May 17 05:23:10 2025
+step 62300, will finish Sat May 17 05:23:10 2025
+step 62400, will finish Sat May 17 05:23:09 2025
+step 62500, will finish Sat May 17 05:23:09 2025
+step 62600, will finish Sat May 17 05:23:09 2025
+step 62700, will finish Sat May 17 05:23:09 2025
+step 62800, will finish Sat May 17 05:23:09 2025
+step 62900, will finish Sat May 17 05:23:09 2025
+step 63000, will finish Sat May 17 05:23:09 2025
+step 63100, will finish Sat May 17 05:23:09 2025
+step 63200, will finish Sat May 17 05:23:09 2025
+step 63300, will finish Sat May 17 05:23:09 2025
+step 63400, will finish Sat May 17 05:23:09 2025
+step 63500, will finish Sat May 17 05:23:09 2025

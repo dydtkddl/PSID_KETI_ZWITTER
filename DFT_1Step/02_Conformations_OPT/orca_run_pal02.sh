@@ -1,0 +1,6 @@
+cd Aminobutyric/06_Aminobutyric-acid_zwitterion && /home/yongsang/orca_6_0_1_linux_x86-64_shared_openmpi416/orca 06_Aminobutyric-acid_zwitterion.inp > 06_Aminobutyric-acid_zwitterion.out && cd ../../
+cd Aminobutyric/07_Aminobutyric-acid_zwitterion && /home/yongsang/orca_6_0_1_linux_x86-64_shared_openmpi416/orca 07_Aminobutyric-acid_zwitterion.inp > 07_Aminobutyric-acid_zwitterion.out && cd ../../
+cd Aminobutyric/08_Aminobutyric-acid_zwitterion && /home/yongsang/orca_6_0_1_linux_x86-64_shared_openmpi416/orca 08_Aminobutyric-acid_zwitterion.inp > 08_Aminobutyric-acid_zwitterion.out && cd ../../
+cd Alanine/01_Alanine_zwitterion && /home/yongsang/orca_6_0_1_linux_x86-64_shared_openmpi416/orca 01_Alanine_zwitterion.inp > 01_Alanine_zwitterion.out && cd ../../
+cd Alanine/02_Alanine_zwitterion && /home/yongsang/orca_6_0_1_linux_x86-64_shared_openmpi416/orca 02_Alanine_zwitterion.inp > 02_Alanine_zwitterion.out && cd ../../
+cd Alanine/03_Alanine_zwitterion && /home/yongsang/orca_6_0_1_linux_x86-64_shared_openmpi416/orca 03_Alanine_zwitterion.inp > 03_Alanine_zwitterion.out && cd ../../

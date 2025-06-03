@@ -1,0 +1,3846 @@
+                      :-) GROMACS - gmx mdrun, 2025.2 (-:
+
+Copyright 1991-2025 The GROMACS Authors.
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+                         Current GROMACS contributors:
+       Mark Abraham           Andrey Alekseenko           Brian Andrews       
+      Vladimir Basov              Paul Bauer                Hugh Bird         
+      Eliane Briand               Ania Brown              Mahesh Doijade      
+      Giacomo Fiorin          Stefan Fleischmann          Sergey Gorelov      
+   Gilles Gouaillardet            Alan Gray              M. Eric Irrgang      
+   Farzaneh Jalalypour         Petter Johansson          Carsten Kutzner      
+    Grzegorz Łazarski         Justin A. Lemkul          Magnus Lundborg      
+       Pascal Merz             Vedran Miletić            Dmitry Morozov      
+     Lukas Müllender            Julien Nabet             Szilárd Páll      
+ Andrea Pasquadibisceglie     Michele Pellegrino         Nicola Piasentin     
+     Daniele Rapetti         Muhammad Umair Sadiq         Hubert Santuz       
+      Roland Schulz             Michael Shirts           Tatiana Shugaeva     
+     Alexey Shvetsov            Philip Turner            Alessandra Villa     
+ Sebastian Wingbermühle  
+
+                         Previous GROMACS contributors:
+        Emile Apol             Rossen Apostolov           James Barnett       
+  Herman J.C. Berendsen         Cathrine Bergh             Par Bjelkmar       
+      Christian Blau          Viacheslav Bolnykh            Kevin Boyd        
+    Aldert van Buuren          Carlo Camilloni           Rudi van Drunen      
+      Anton Feenstra           Oliver Fleetwood            Vytas Gapsys       
+       Gaurav Garg             Gerrit Groenhof            Bert de Groot       
+      Anca Hamuraru           Vincent Hindriksen          Victor Holanda      
+     Aleksei Iupinov              Joe Jordan            Christoph Junghans    
+    Prashanth Kanduri        Dimitrios Karkoulis           Peter Kasson       
+      Sebastian Kehl           Sebastian Keller             Jiri Kraus        
+       Per Larsson              Viveca Lindahl            Erik Marklund       
+    Pieter Meulenhoff           Teemu Murtola              Sander Pronk       
+      Alfons Sijbers            Balint Soproni         David van der Spoel    
+      Peter Tieleman            Carsten Uphoff             Jon Vincent        
+     Teemu Virolainen         Christian Wennberg           Maarten Wolf       
+      Artem Zhmurov       
+
+                  Coordinated by the GROMACS project leaders:
+                           Berk Hess and Erik Lindahl
+
+GROMACS:      gmx mdrun, version 2025.2
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/yongsang/Research/PSID_server_room/KETI_KimDongUk/DFT_1Step/09_GROMACS/02_Alanine_zwitterion/simulations/case_065_sorted
+Process ID:   2152173
+Command line:
+  gmx mdrun -deffnm npt -nt 30
+
+GROMACS version:     2025.2
+Precision:           mixed
+Memory model:        64 bit
+MPI library:         thread_mpi
+OpenMP support:      enabled (GMX_OPENMP_MAX_THREADS = 128)
+GPU support:         disabled
+SIMD instructions:   AVX_512
+CPU FFT library:     fftw-3.3.10-sse2-avx-avx2-avx2_128-avx512
+GPU FFT library:     none
+Multi-GPU FFT:       none
+RDTSCP usage:        enabled
+TNG support:         enabled
+Hwloc support:       disabled
+Tracing support:     disabled
+C compiler:          /opt/rh/devtoolset-11/root/usr/bin/gcc GNU 11.2.1
+C compiler flags:    -fexcess-precision=fast -funroll-all-loops -march=skylake-avx512 -Wno-missing-field-initializers -O3 -DNDEBUG
+C++ compiler:        /opt/rh/devtoolset-11/root/usr/bin/g++ GNU 11.2.1
+C++ compiler flags:  -fexcess-precision=fast -funroll-all-loops -march=skylake-avx512 -Wno-missing-field-initializers -Wno-cast-function-type-strict SHELL:-fopenmp -O3 -DNDEBUG
+BLAS library:        External - detected on the system
+LAPACK library:      External - detected on the system
+
+
+Running on 1 node with total 36 cores, 36 processing units
+Hardware detected on host ga00:
+  CPU info:
+    Vendor: Intel
+    Brand:  Intel(R) Xeon(R) Gold 6354 CPU @ 3.00GHz
+    Family: 6   Model: 106   Stepping: 6
+    Features: aes apic avx avx2 avx512f avx512cd avx512bw avx512vl avx512secondFMA clfsh cmov cx8 cx16 f16c fma htt intel lahf mmx msr nonstop_tsc pcid pclmuldq pdcm pdpe1gb popcnt pse rdrnd rdtscp sha sse2 sse3 sse4.1 sse4.2 ssse3 tdt x2apic
+    Number of AVX-512 FMA units: 2
+  Hardware topology: Basic
+    Packages, cores, and logical processors:
+    [indices refer to OS logical processors]
+      Package  0: [   0] [   2] [   4] [   6] [   8] [  10] [  12] [  14] [  16] [  18] [  20] [  22] [  24] [  26] [  28] [  30] [  32] [  34]
+      Package  1: [   1] [   3] [   5] [   7] [   9] [  11] [  13] [  15] [  17] [  19] [  21] [  23] [  25] [  27] [  29] [  31] [  33] [  35]
+    CPU limit set by OS: -1   Recommended max number of threads: 36
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+M. J. Abraham, T. Murtola, R. Schulz, S. Páll, J. C. Smith, B. Hess, E.
+Lindahl
+GROMACS: High performance molecular simulations through multi-level
+parallelism from laptops to supercomputers
+SoftwareX (2015)
+DOI: 10.1016/j.softx.2015.06.001
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Páll, M. J. Abraham, C. Kutzner, B. Hess, E. Lindahl
+Tackling Exascale Software Challenges in Molecular Dynamics Simulations with
+GROMACS
+In S. Markidis & E. Laure (Eds.), Solving Software Challenges for Exascale (2015)
+DOI: 10.1007/978-3-319-15976-8_1
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Pronk, S. Páll, R. Schulz, P. Larsson, P. Bjelkmar, R. Apostolov, M. R.
+Shirts, J. C. Smith, P. M. Kasson, D. van der Spoel, B. Hess, E. Lindahl
+GROMACS 4.5: a high-throughput and highly parallel open source molecular
+simulation toolkit
+Bioinformatics (2013)
+DOI: 10.1093/bioinformatics/btt055
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess, C. Kutzner, D. van der Spoel, E. Lindahl
+GROMACS 4: Algorithms for highly efficient, load-balanced, and scalable
+molecular simulation
+J. Chem. Theory Comput. (2008)
+DOI: 10.1021/ct700301q
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+D. van der Spoel, E. Lindahl, B. Hess, G. Groenhof, A. E. Mark, H. J. C.
+Berendsen
+GROMACS: Fast, Flexible and Free
+J. Comp. Chem. (2005)
+DOI: 10.1002/jcc.20291
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+E. Lindahl, B. Hess, D. van der Spoel
+GROMACS 3.0: A package for molecular simulation and trajectory analysis
+J. Mol. Mod. (2001)
+DOI: 10.1007/s008940100045
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+H. J. C. Berendsen, D. van der Spoel and R. van Drunen
+GROMACS: A message-passing parallel molecular dynamics implementation
+Comp. Phys. Comm. (1995)
+DOI: 10.1016/0010-4655(95)00042-E
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE CITE THE DOI FOR THIS VERSION OF GROMACS ++++
+https://doi.org/10.5281/zenodo.15387018
+-------- -------- --- Thank You --- -------- --------
+
+Input Parameters:
+   integrator                     = md
+   tinit                          = 0
+   dt                             = 0.002
+   nsteps                         = 250000
+   init-step                      = 0
+   simulation-part                = 1
+   mts                            = false
+   mass-repartition-factor        = 1
+   comm-mode                      = Linear
+   nstcomm                        = 100
+   bd-fric                        = 0
+   ld-seed                        = -272122641
+   emtol                          = 10
+   emstep                         = 0.01
+   niter                          = 20
+   fcstep                         = 0
+   nstcgsteep                     = 1000
+   nbfgscorr                      = 10
+   rtpi                           = 0.05
+   nstxout                        = 1000
+   nstvout                        = 1000
+   nstfout                        = 0
+   nstlog                         = 1000
+   nstcalcenergy                  = 100
+   nstenergy                      = 1000
+   nstxout-compressed             = 0
+   compressed-x-precision         = 1000
+   cutoff-scheme                  = Verlet
+   nstlist                        = 10
+   pbc                            = xyz
+   periodic-molecules             = false
+   verlet-buffer-tolerance        = 0.005
+   verlet-buffer-pressure-tolerance = 0.5
+   rlist                          = 1
+   coulombtype                    = PME
+   coulomb-modifier               = Potential-shift
+   rcoulomb-switch                = 0
+   rcoulomb                       = 1
+   epsilon-r                      = 1
+   epsilon-rf                     = inf
+   vdw-type                       = Cut-off
+   vdw-modifier                   = Potential-shift
+   rvdw-switch                    = 0
+   rvdw                           = 1
+   DispCorr                       = No
+   table-extension                = 1
+   fourierspacing                 = 0.12
+   fourier-nx                     = 25
+   fourier-ny                     = 25
+   fourier-nz                     = 25
+   pme-order                      = 4
+   ewald-rtol                     = 1e-05
+   ewald-rtol-lj                  = 0.001
+   lj-pme-comb-rule               = Geometric
+   ewald-geometry                 = 3d
+   epsilon-surface                = 0
+   ensemble-temperature-setting   = constant
+   ensemble-temperature           = 300
+   tcoupl                         = V-rescale
+   nsttcouple                     = 10
+   nh-chain-length                = 0
+   print-nose-hoover-chain-variables = false
+   pcoupl                         = Berendsen
+   pcoupltype                     = Isotropic
+   nstpcouple                     = 100
+   tau-p                          = 2
+   compressibility (3x3):
+      compressibility[    0]={ 4.50000e-05,  0.00000e+00,  0.00000e+00}
+      compressibility[    1]={ 0.00000e+00,  4.50000e-05,  0.00000e+00}
+      compressibility[    2]={ 0.00000e+00,  0.00000e+00,  4.50000e-05}
+   ref-p (3x3):
+      ref-p[    0]={ 1.00000e+00,  0.00000e+00,  0.00000e+00}
+      ref-p[    1]={ 0.00000e+00,  1.00000e+00,  0.00000e+00}
+      ref-p[    2]={ 0.00000e+00,  0.00000e+00,  1.00000e+00}
+   refcoord-scaling               = COM
+   posres-com (1x3):
+      posres-com[    0]={ 4.94339e-01,  5.92590e-01,  5.15934e-01}
+   posres-comB (1x3):
+      posres-comB[    0]={ 4.94339e-01,  5.92590e-01,  5.15934e-01}
+   QMMM                           = false
+qm-opts:
+   ngQM                           = 0
+   constraint-algorithm           = Lincs
+   continuation                   = true
+   Shake-SOR                      = false
+   shake-tol                      = 0.0001
+   lincs-order                    = 4
+   lincs-iter                     = 1
+   lincs-warnangle                = 30
+   nwall                          = 0
+   wall-type                      = 9-3
+   wall-r-linpot                  = -1
+   wall-atomtype[0]               = -1
+   wall-atomtype[1]               = -1
+   wall-density[0]                = 0
+   wall-density[1]                = 0
+   wall-ewald-zfac                = 3
+   pull                           = false
+   awh                            = false
+   rotation                       = false
+   interactiveMD                  = false
+   disre                          = No
+   disre-weighting                = Conservative
+   disre-mixed                    = false
+   dr-fc                          = 1000
+   dr-tau                         = 0
+   nstdisreout                    = 100
+   orire-fc                       = 0
+   orire-tau                      = 0
+   nstorireout                    = 100
+   free-energy                    = no
+   cos-acceleration               = 0
+   deform (3x3):
+      deform[    0]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    1]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+      deform[    2]={ 0.00000e+00,  0.00000e+00,  0.00000e+00}
+   simulated-tempering            = false
+   swapcoords                     = no
+   userint1                       = 0
+   userint2                       = 0
+   userint3                       = 0
+   userint4                       = 0
+   userreal1                      = 0
+   userreal2                      = 0
+   userreal3                      = 0
+   userreal4                      = 0
+   applied-forces:
+     electric-field:
+       x:
+         E0                       = 0
+         omega                    = 0
+         t0                       = 0
+         sigma                    = 0
+       y:
+         E0                       = 0
+         omega                    = 0
+         t0                       = 0
+         sigma                    = 0
+       z:
+         E0                       = 0
+         omega                    = 0
+         t0                       = 0
+         sigma                    = 0
+     density-guided-simulation:
+       active                     = false
+       group                      = protein
+       similarity-measure         = inner-product
+       atom-spreading-weight      = unity
+       force-constant             = 1e+09
+       gaussian-transform-spreading-width = 0.2
+       gaussian-transform-spreading-range-in-multiples-of-width = 4
+       reference-density-filename = reference.mrc
+       nst                        = 1
+       normalize-densities        = true
+       adaptive-force-scaling     = false
+       adaptive-force-scaling-time-constant = 4
+       shift-vector               = 
+       transformation-matrix      = 
+     qmmm-cp2k:
+       active                     = false
+       qmgroup                    = System
+       qmmethod                   = PBE
+       qmfilenames                = 
+       qmcharge                   = 0
+       qmmultiplicity             = 1
+     colvars:
+       active                     = false
+       configfile                 = 
+       seed                       = -1
+     nnpot:
+       active                     = false
+       modelfile                  = model.pt
+       input-group                = System
+       model-input1               = 
+       model-input2               = 
+       model-input3               = 
+       model-input4               = 
+grpopts:
+   nrdf:          71
+   ref-t:         300
+   tau-t:         0.1
+annealing:          No
+annealing-npoints:           0
+   acc:	           0           0           0
+   nfreeze:           N           N           N
+   energygrp-flags[  0]: 0
+
+Changing nstlist from 10 to 100, rlist from 1 to 1.081
+
+
+Initializing Domain Decomposition on 1 ranks
+Dynamic load balancing: auto
+Using update groups, nr 13, average size 2.6 atoms, max. radius 0.099 nm
+Minimum cell size due to atom displacement: 0.581 nm
+Initial maximum distances in bonded interactions:
+    two-body bonded interactions: 0.348 nm, LJ-14, atoms 7 11
+  multi-body bonded interactions: 0.348 nm, Ryckaert-Bell., atoms 7 11
+Minimum cell size due to bonded interactions: 0.383 nm
+Using 0 separate PME ranks because: there are too few total ranks for efficient splitting
+Optimizing the DD grid for 1 cells with a minimum initial size of 0.581 nm
+The maximum allowed number of cells is: X 5 Y 5 Z 5
+Domain decomposition grid 1 x 1 x 1, separate PME ranks 0
+PME domain decomposition: 1 x 1 x 1
+
+The initial number of communication pulses is:
+The initial domain decomposition cell size is:
+
+The maximum allowed distance for atom groups involved in interactions is:
+                 non-bonded interactions           1.279 nm
+(the following are initial values, they could change due to box deformation)
+            two-body bonded interactions  (-rdd)   1.279 nm
+          multi-body bonded interactions  (-rdd)   1.279 nm
+
+When dynamic load balancing gets turned on, these settings will change to:
+The maximum number of communication pulses is:
+The minimum size for domain decomposition cells is 1.279 nm
+The requested allowed shrink of DD cells (option -dds) is: 0.80
+The allowed shrink of domain decomposition cells is:
+The maximum allowed distance for atom groups involved in interactions is:
+                 non-bonded interactions           1.279 nm
+            two-body bonded interactions  (-rdd)   1.279 nm
+          multi-body bonded interactions  (-rdd)   1.279 nm
+
+Local state does not use filler particles
+
+Using 1 MPI thread
+Using 30 OpenMP threads 
+
+System total charge: -0.000
+Will do PME sum in reciprocal space for electrostatic interactions.
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+U. Essmann, L. Perera, M. L. Berkowitz, T. Darden, H. Lee, L. G. Pedersen 
+A smooth particle mesh Ewald method
+J. Chem. Phys. (1995)
+DOI: 10.1063/1.470117
+-------- -------- --- Thank You --- -------- --------
+
+Using a Gaussian width (1/beta) of 0.320163 nm for Ewald
+Potential shift: LJ r^-12: -1.000e+00 r^-6: -1.000e+00, Ewald -1.000e-05
+Initialized non-bonded Coulomb Ewald tables, spacing: 9.33e-04 size: 1073
+
+Generated table with 1040 data points for 1-4 COUL.
+Tabscale = 500 points/nm
+Generated table with 1040 data points for 1-4 LJ6.
+Tabscale = 500 points/nm
+Generated table with 1040 data points for 1-4 LJ12.
+Tabscale = 500 points/nm
+
+
+Using SIMD2xMM 4x8 nonbonded short-range kernels
+
+Using a dual 4x8 pair-list setup updated with dynamic pruning:
+  outer list: updated every 100 steps, buffer 0.081 nm, rlist 1.081 nm
+  inner list: updated every  34 steps, buffer 0.000 nm, rlist 1.000 nm
+At tolerance 0.005 kJ/mol/ps per atom, equivalent classical 1x1 list would be:
+  outer list: updated every 100 steps, buffer 0.214 nm, rlist 1.214 nm
+  inner list: updated every  34 steps, buffer 0.106 nm, rlist 1.106 nm
+
+The average pressure is off by at most 0.45 bar due to missing LJ interactions
+
+Using Geometric Lennard-Jones combination rule
+
+Linking all bonded interactions to atoms
+
+
+NOTE: The number of threads is not equal to the number of (logical) cpus
+      and the -pin option is set to auto: will not pin threads to cpus.
+      This can lead to significant performance degradation.
+      Consider using -pin on (and -pinoffset in case you run multiple jobs).
+
+Initializing LINear Constraint Solver
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+B. Hess, H. Bekker, H. J. C. Berendsen, J. G. E. M. Fraaije
+LINCS: A Linear Constraint Solver for molecular simulations
+J. Comp. Chem. (1997)
+DOI: 10.1002/(sici)1096-987x(199709)18:12<1463::aid-jcc4>3.0.co;2-h
+-------- -------- --- Thank You --- -------- --------
+
+The number of constraints is 7
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+S. Miyamoto, P. A. Kollman
+SETTLE: An Analytical Version of the SHAKE and RATTLE Algorithms for Rigid
+Water Models
+J. Comp. Chem. (1992)
+DOI: 10.1002/jcc.540130805
+-------- -------- --- Thank You --- -------- --------
+
+
+++++ PLEASE READ AND CITE THE FOLLOWING REFERENCE ++++
+G. Bussi, D. Donadio, M. Parrinello
+Canonical sampling through velocity rescaling
+J. Chem. Phys. (2007)
+DOI: 10.1063/1.2408420
+-------- -------- --- Thank You --- -------- --------
+
+There are: 34 Atoms
+
+Atom distribution over 1 domains: av 34 stddev 0 min 34 max 34
+Center of mass motion removal mode is Linear
+We have the following groups for center of mass motion removal:
+  0:  rest
+
+Started mdrun on rank 0 Sun May 18 15:53:12 2025
+
+           Step           Time
+              0        0.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.08299e-07    1.88247e+01    1.07501e+01    5.63788e+00   -2.88576e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.18418e+02   -6.06485e+02    2.06675e+01    6.53784e-04   -7.20763e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.40251e+01   -6.36738e+02   -6.36661e+02    2.84673e+02    1.25262e+02
+   Constr. rmsd
+    1.69518e-06
+
+           Step           Time
+           1000        2.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.60361e+00    2.65646e+01    1.06563e+01    6.46617e+00   -2.86170e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.63764e+01   -5.71886e+02    2.00015e+01    1.33506e+00   -7.23053e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.79497e+01   -6.35103e+02   -6.44560e+02    2.97969e+02   -5.51913e+01
+   Constr. rmsd
+    6.86656e-07
+
+           Step           Time
+           2000        4.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.43868e+01    3.04661e+01    1.10662e+01    7.72245e+00   -2.87678e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.60993e+01   -5.76762e+02    1.66725e+01    5.56183e+00   -7.02465e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.39923e+01   -6.08472e+02   -6.47853e+02    3.18441e+02    8.69218e+01
+   Constr. rmsd
+    8.95389e-06
+
+           Step           Time
+           3000        6.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.54199e+01    3.81691e+01    9.67379e+00    1.43503e+00   -2.77765e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.59864e+01   -6.02445e+02    2.52135e+01    1.74836e+00   -7.12564e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.51240e+01   -6.37440e+02   -6.51911e+02    2.54517e+02   -2.21918e+02
+   Constr. rmsd
+    7.54619e-07
+
+           Step           Time
+           4000        8.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.13214e+01    3.52596e+01    1.39814e+01    1.02143e+01   -2.98502e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.06738e+01   -5.67975e+02    2.92670e+01    2.91997e+00   -6.82840e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.02104e+02   -5.80736e+02   -6.57460e+02    3.45923e+02    4.10183e+01
+   Constr. rmsd
+    1.16996e-06
+
+           Step           Time
+           5000       10.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.20007e+01    1.69268e+01    1.36013e+01    8.77882e+00   -2.91615e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.10351e+02   -6.13232e+02    2.62557e+01    2.77881e+00   -7.14153e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.47427e+01   -6.29410e+02   -6.63639e+02    2.87104e+02   -2.75222e+01
+   Constr. rmsd
+    1.39312e-06
+
+           Step           Time
+           6000       12.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.60707e+00    2.22689e+01    1.23486e+01    6.74366e+00   -2.92269e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.83795e+01   -5.52329e+02    2.05339e+01    3.85168e+00   -7.17865e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.01294e+02   -6.16571e+02   -6.70451e+02    3.43180e+02   -8.35272e+01
+   Constr. rmsd
+    4.08989e-06
+
+           Step           Time
+           7000       14.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.17043e-01    3.41995e+01    1.01113e+01    6.81814e+00   -2.90777e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.14645e+01   -5.88367e+02    3.18562e+01    2.49079e+00   -7.01686e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.74282e+01   -6.34258e+02   -6.72338e+02    2.28444e+02    6.34366e+01
+   Constr. rmsd
+    2.58371e-06
+
+           Step           Time
+           8000       16.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.12172e+00    2.71961e+01    1.23866e+01    5.34295e+00   -2.91255e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.14073e+01   -5.53854e+02    2.38111e+01    2.55731e+00   -7.19286e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.36702e+01   -6.35615e+02   -6.91450e+02    2.83471e+02   -1.07138e+02
+   Constr. rmsd
+    2.37202e-06
+
+           Step           Time
+           9000       18.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.11909e+00    5.16069e+01    1.86766e+01    4.25529e+00   -2.90218e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.45415e+01   -5.50369e+02    3.14024e+01    2.44446e+00   -6.64540e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.52501e+01   -5.89290e+02   -6.96760e+02    2.54944e+02    2.29556e+00
+   Constr. rmsd
+    1.13897e-06
+
+           Step           Time
+          10000       20.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.30666e+00    2.33012e+01    7.87336e+00    7.94594e+00   -2.87997e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.90522e+01   -5.76535e+02    2.11763e+01    7.75508e+00   -7.09121e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.58268e+01   -6.33294e+02   -7.09737e+02    2.56898e+02    5.20511e+01
+   Constr. rmsd
+    4.37904e-06
+
+           Step           Time
+          11000       22.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.70333e+00    4.09980e+01    7.27610e+00    1.01982e+01   -2.91068e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.03421e+01   -5.92558e+02    1.89209e+01    4.94079e+00   -7.17247e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.96350e+01   -6.27612e+02   -7.18066e+02    3.03679e+02    1.10999e+02
+   Constr. rmsd
+    8.06210e-06
+
+           Step           Time
+          12000       24.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.38879e+00    3.88026e+01    9.86481e+00    1.08729e+01   -2.95047e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.37595e+01   -6.20282e+02    1.60809e+01    1.26063e+00   -7.37299e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.69284e+01   -6.70370e+02   -7.25694e+02    2.26750e+02    1.38086e+01
+   Constr. rmsd
+    1.53011e-06
+
+           Step           Time
+          13000       26.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.29063e+00    4.28940e+01    1.25184e+01    4.97455e+00   -2.87034e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.02234e+01   -5.77093e+02    2.01034e+01    2.60372e+00   -6.91520e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.72375e+01   -6.24282e+02   -7.25348e+02    2.27797e+02   -8.94542e+01
+   Constr. rmsd
+    1.32994e-06
+
+           Step           Time
+          14000       28.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.45600e+01    2.67831e+01    1.01004e+01    3.42562e+00   -2.87219e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.95700e+01   -5.70720e+02    2.01355e+01    8.41694e+00   -7.04947e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.58365e+01   -6.09111e+02   -7.32686e+02    3.24690e+02    2.11183e+01
+   Constr. rmsd
+    8.55336e-06
+
+           Step           Time
+          15000       30.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.31757e+01    4.42746e+01    9.35138e+00    3.18674e+00   -2.80987e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.34901e+01   -6.02725e+02    2.75847e+01    1.77451e+00   -7.00874e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.84772e+01   -6.22397e+02   -7.33842e+02    2.65877e+02    3.35719e+01
+   Constr. rmsd
+    5.89626e-07
+
+           Step           Time
+          16000       32.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.88256e+01    3.02045e+01    8.90261e+00    3.82959e+00   -2.78780e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.67313e+01   -6.16659e+02    2.67322e+01    3.03854e+00   -7.07175e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.35043e+01   -6.43671e+02   -7.44833e+02    2.15150e+02   -1.07826e+02
+   Constr. rmsd
+    1.31787e-06
+
+           Step           Time
+          17000       34.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.61489e+00    3.32189e+01    1.38215e+01    7.85408e+00   -2.88326e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.61045e+01   -5.61734e+02    2.40540e+01    1.69677e+00   -6.81695e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.29576e+01   -5.88738e+02   -7.49587e+02    3.14936e+02    1.14892e+02
+   Constr. rmsd
+    4.93630e-06
+
+           Step           Time
+          18000       36.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.58747e+00    5.49932e+01    1.06002e+01    6.12241e+00   -2.89114e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.21858e+01   -5.81604e+02    1.94483e+01    4.38316e+00   -6.94397e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.11647e+02   -5.82751e+02   -7.50614e+02    3.78253e+02   -7.26440e+01
+   Constr. rmsd
+    3.84557e-06
+
+           Step           Time
+          19000       38.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.10009e+01    4.75718e+01    8.94845e+00    6.18372e+00   -2.89940e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.17264e+02   -6.25510e+02    2.31039e+01    6.03964e+00   -6.95337e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.34017e+01   -6.11935e+02   -7.58495e+02    2.82561e+02    3.93056e+01
+   Constr. rmsd
+    1.51041e-06
+
+           Step           Time
+          20000       40.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.12908e+01    3.02843e+01    8.78847e+00    1.27681e+01   -2.99011e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.79995e+01   -5.81097e+02    2.07560e+01    2.22140e+00   -7.25999e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.67245e+01   -6.39274e+02   -7.65148e+02    2.93819e+02    1.22878e+02
+   Constr. rmsd
+    3.41401e-06
+
+           Step           Time
+          21000       42.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.36859e+01    1.97910e+01    1.45901e+01    8.53929e+00   -2.91147e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.93055e+01   -5.89322e+02    1.69910e+01    3.30847e+00   -7.24258e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.50869e+01   -6.39171e+02   -7.72594e+02    2.88270e+02   -1.17279e+02
+   Constr. rmsd
+    8.68149e-07
+
+           Step           Time
+          22000       44.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.71399e+00    5.25624e+01    7.61112e+00    2.06298e+01   -2.86709e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.19576e+01   -6.06632e+02    1.90735e+01    4.45946e+00   -7.04332e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.36052e+01   -6.20727e+02   -7.76006e+02    2.83251e+02   -1.11246e+01
+   Constr. rmsd
+    1.11419e-06
+
+           Step           Time
+          23000       46.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.28204e+00    3.07598e+01    1.06377e+01    8.57900e+00   -2.91221e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.04496e+01   -5.81729e+02    2.08048e+01    2.83367e+00   -7.30604e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.26758e+01   -6.37928e+02   -7.78683e+02    3.13981e+02   -1.92856e+01
+   Constr. rmsd
+    2.04314e-06
+
+           Step           Time
+          24000       48.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.25772e+01    2.07727e+01    1.00448e+01    3.29540e+00   -2.81919e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.14739e+02   -6.09147e+02    1.75424e+01    3.00832e+00   -7.09086e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.61284e+01   -6.12958e+02   -7.83157e+02    3.25678e+02    1.93524e+01
+   Constr. rmsd
+    5.40983e-06
+
+           Step           Time
+          25000       50.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.30500e+00    6.11129e+01    1.02952e+01    8.52019e+00   -2.94666e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.03034e+02   -5.95827e+02    1.78627e+01    2.60860e+00   -6.84754e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.24198e+02   -5.60556e+02   -7.86127e+02    4.20778e+02    8.02963e+01
+   Constr. rmsd
+    8.91830e-06
+
+           Step           Time
+          26000       52.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.92266e+00    1.57935e+01    9.35492e+00    4.76645e+00   -2.87371e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.24567e+01   -6.14125e+02    2.13338e+01    6.35823e-01   -7.50232e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.01859e+02   -6.48373e+02   -7.93015e+02    3.45092e+02   -7.03903e+01
+   Constr. rmsd
+    1.38435e-06
+
+           Step           Time
+          27000       54.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.04012e+00    3.59714e+01    1.10292e+01    7.58150e+00   -2.86822e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.67609e+01   -5.91575e+02    1.63506e+01    2.33120e+00   -7.33333e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.29077e+01   -6.60425e+02   -7.93848e+02    2.47008e+02   -1.15279e+01
+   Constr. rmsd
+    1.27758e-06
+
+           Step           Time
+          28000       56.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.33483e+01    4.01668e+01    1.05094e+01    1.22494e+01   -2.92022e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.60390e+01   -6.12722e+02    1.93943e+01    6.31476e+00   -7.16722e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.90654e+01   -6.27657e+02   -8.01208e+02    3.01749e+02    7.09354e+01
+   Constr. rmsd
+    7.99175e-06
+
+           Step           Time
+          29000       58.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.97780e+00    2.19646e+01    1.08856e+01    1.03419e+01   -2.97418e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.92788e+01   -5.77293e+02    2.24327e+01    1.81210e+00   -7.19017e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.02859e+02   -6.16158e+02   -8.05892e+02    3.48483e+02    6.29758e+01
+   Constr. rmsd
+    3.76602e-06
+
+           Step           Time
+          30000       60.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.11086e+01    2.96778e+01    8.53562e+00    6.66852e+00   -2.86660e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.93993e+01   -6.08268e+02    2.39803e+01    6.51342e+00   -7.09044e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.42892e+01   -6.14755e+02   -8.14497e+02    3.19447e+02   -5.36793e+01
+   Constr. rmsd
+    2.64918e-06
+
+           Step           Time
+          31000       62.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.83014e+00    2.85653e+01    9.68884e+00    8.35974e+00   -2.90089e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.92771e+01   -5.80529e+02    2.27117e+01    3.72070e+00   -7.05464e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.88389e+01   -6.06625e+02   -8.24195e+02    3.34861e+02    8.02870e+01
+   Constr. rmsd
+    4.04873e-06
+
+           Step           Time
+          32000       64.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.55997e+00    3.92107e+01    1.04976e+01    7.24729e+00   -2.87383e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.64748e+01   -5.83761e+02    1.78105e+01    5.35372e+00   -7.02989e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.10986e+02   -5.92004e+02   -8.30384e+02    3.76014e+02    1.20156e+01
+   Constr. rmsd
+    3.47625e-06
+
+           Step           Time
+          33000       66.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.49784e-01    3.24361e+01    7.67073e+00    1.25866e+01   -2.93503e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.22929e+01   -5.78872e+02    2.48761e+01    1.52867e+00   -7.00133e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.73715e+01   -6.02762e+02   -8.38562e+02    3.29890e+02    8.97733e+01
+   Constr. rmsd
+    6.41539e-06
+
+           Step           Time
+          34000       68.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.68197e+00    3.60037e+01    8.89532e+00    6.23295e+00   -2.87560e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.09747e+01   -5.91142e+02    1.85824e+01    4.79929e+00   -7.08532e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.20697e+02   -5.87834e+02   -8.46062e+02    4.08917e+02   -1.82921e+01
+   Constr. rmsd
+    2.17548e-06
+
+           Step           Time
+          35000       70.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.79470e+00    3.34503e+01    1.07834e+01    4.86094e+00   -2.87806e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.94704e+01   -6.09919e+02    2.18008e+01    1.02200e+00   -7.23542e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.96389e+01   -6.23903e+02   -8.58484e+02    3.37572e+02    3.92386e+01
+   Constr. rmsd
+    3.81935e-06
+
+           Step           Time
+          36000       72.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.24570e+00    2.25929e+01    1.26328e+01    9.08607e+00   -2.91031e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.87720e+01   -5.68415e+02    2.08175e+01    1.46368e+00   -7.29836e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.49422e+01   -6.54894e+02   -8.63054e+02    2.53901e+02    2.87550e+01
+   Constr. rmsd
+    4.72270e-06
+
+           Step           Time
+          37000       74.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.12529e+00    2.94963e+01    1.03203e+01    5.56079e+00   -2.88537e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.34188e+01   -5.89876e+02    1.84265e+01    2.54512e+00   -7.34520e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.82462e+01   -6.56273e+02   -8.67679e+02    2.65095e+02   -4.12280e+01
+   Constr. rmsd
+    3.23360e-06
+
+           Step           Time
+          38000       76.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.96416e+00    4.01149e+01    7.44734e+00    7.48026e+00   -2.89899e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.96689e+01   -5.56489e+02    1.91455e+01    6.91802e+00   -6.91650e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.03616e+02   -5.88034e+02   -8.74679e+02    3.51045e+02    5.78544e+01
+   Constr. rmsd
+    1.69952e-06
+
+           Step           Time
+          39000       78.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.06252e+00    3.17608e+01    1.00259e+01    6.33418e+00   -2.92922e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.48471e+01   -5.58119e+02    1.97344e+01    1.59465e+00   -7.18682e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.93473e+01   -6.19334e+02   -8.88659e+02    3.36584e+02   -1.06057e+02
+   Constr. rmsd
+    2.00212e-06
+
+           Step           Time
+          40000       80.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.48700e+00    5.62615e+01    1.18809e+01    9.64490e+00   -2.84970e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.46601e+01   -5.64851e+02    2.50555e+01    3.05338e+00   -6.69777e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.34242e+01   -5.76353e+02   -9.02443e+02    3.16517e+02   -2.91877e+01
+   Constr. rmsd
+    1.26801e-06
+
+           Step           Time
+          41000       82.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.98035e+00    6.20418e+01    7.67009e+00    9.40178e+00   -2.95675e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.16284e+01   -5.38960e+02    2.67361e+01    2.44900e+00   -6.68727e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.07638e+02   -5.61089e+02   -9.06560e+02    3.64672e+02   -9.36183e+00
+   Constr. rmsd
+    1.11601e-06
+
+           Step           Time
+          42000       84.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.74773e+01    3.47546e+01    1.28660e+01    1.04550e+01   -2.94050e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.05565e+01   -5.72988e+02    2.66985e+01    1.52778e+00   -6.72702e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.01457e+02   -5.71245e+02   -9.18883e+02    3.43732e+02    3.38388e+01
+   Constr. rmsd
+    2.38823e-06
+
+           Step           Time
+          43000       86.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.50128e+00    2.72298e+01    8.91224e+00    6.60181e+00   -2.92223e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.16593e+01   -5.45913e+02    2.18767e+01    6.91903e+00   -6.89435e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.03644e+02   -5.85791e+02   -9.33563e+02    3.51141e+02    2.14949e+01
+   Constr. rmsd
+    4.32176e-06
+
+           Step           Time
+          44000       88.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.61876e+00    4.66715e+01    1.13154e+01    6.82923e+00   -2.90474e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.80694e+01   -6.20911e+02    1.92560e+01    3.22030e+00   -7.22405e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.58605e+01   -6.46544e+02   -9.38593e+02    2.57012e+02    1.09827e+01
+   Constr. rmsd
+    1.16953e-06
+
+           Step           Time
+          45000       90.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.62719e+00    2.91326e+01    1.34749e+01    2.76132e+00   -2.80691e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.36751e+01   -5.52144e+02    2.29413e+01    5.37125e+00   -7.13852e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.32740e+01   -6.50578e+02   -9.41668e+02    2.14369e+02   -5.20396e+01
+   Constr. rmsd
+    7.93948e-07
+
+           Step           Time
+          46000       92.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.84289e+00    3.12757e+01    8.70819e+00    7.50006e+00   -2.90314e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.19460e+01   -5.85092e+02    2.72896e+01    3.50156e+00   -7.21342e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.03566e+02   -6.17776e+02   -9.51975e+02    3.50877e+02   -6.54294e+01
+   Constr. rmsd
+    6.24733e-07
+
+           Step           Time
+          47000       94.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.62297e+00    2.54382e+01    9.82082e+00    1.32946e+01   -3.01341e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.31628e+01   -5.82490e+02    2.04969e+01    3.33636e+00   -7.28657e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.61154e+01   -6.32542e+02   -9.61250e+02    3.25635e+02    1.59118e+02
+   Constr. rmsd
+    1.68602e-06
+
+           Step           Time
+          48000       96.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.87570e+00    4.32093e+01    1.09681e+01    6.58998e+00   -2.86596e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.85812e+01   -5.68056e+02    2.25656e+01    5.57660e+00   -6.98286e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.02463e+02   -5.95822e+02   -9.65189e+02    3.47141e+02   -2.50507e+01
+   Constr. rmsd
+    7.29229e-06
+
+           Step           Time
+          49000       98.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.37902e+00    2.05934e+01    1.14405e+01    7.05464e+00   -2.93508e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.11849e+01   -5.71011e+02    2.20282e+01    1.71662e+00   -7.24122e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.33704e+01   -6.30751e+02   -9.72825e+02    3.16335e+02    1.79228e+01
+   Constr. rmsd
+    1.06195e-06
+
+           Step           Time
+          50000      100.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.83354e+00    2.80779e+01    9.56658e+00    5.76325e+00   -2.84106e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.65596e+01   -5.77877e+02    2.29061e+01    6.28882e+00   -7.05987e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.53700e+01   -6.20617e+02   -9.80411e+02    2.89230e+02    3.77006e+01
+   Constr. rmsd
+    7.02728e-07
+
+           Step           Time
+          51000      102.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.42704e+01    3.23456e+01    8.87013e+00    5.75071e+00   -2.86110e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.32812e+01   -5.92810e+02    2.02616e+01    3.63441e+00   -7.00506e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.19777e+01   -6.08528e+02   -9.90920e+02    3.11616e+02   -1.07004e+02
+   Constr. rmsd
+    1.09559e-06
+
+           Step           Time
+          52000      104.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.48982e+00    2.93431e+01    6.04735e+00    7.53734e+00   -2.83606e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.80546e+01   -5.89724e+02    2.64279e+01    7.54624e+00   -7.15883e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.25379e+02   -5.90505e+02   -1.00430e+03    4.24777e+02    1.00897e+02
+   Constr. rmsd
+    2.73857e-06
+
+           Step           Time
+          53000      106.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.36372e+00    4.99709e+01    1.00330e+01    6.31474e+00   -2.89375e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.49936e+01   -5.94725e+02    1.91825e+01    4.13997e+00   -7.13102e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.01692e+02   -6.11410e+02   -1.01207e+03    3.44527e+02    6.22354e+01
+   Constr. rmsd
+    2.51250e-06
+
+           Step           Time
+          54000      108.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.77832e+00    3.35929e+01    8.94404e+00    7.28340e+00   -2.86913e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.49885e+01   -5.93963e+02    2.06453e+01    1.52635e+00   -7.25117e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.78018e+01   -6.47315e+02   -1.02262e+03    2.63589e+02    1.85464e+00
+   Constr. rmsd
+    3.49423e-06
+
+           Step           Time
+          55000      110.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.35974e+00    4.09932e+01    1.18231e+01    5.51855e+00   -2.91005e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.94507e+01   -5.80492e+02    2.23639e+01    4.37049e+00   -7.00617e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.05073e+02   -5.95544e+02   -1.02744e+03    3.55983e+02    3.58692e+01
+   Constr. rmsd
+    4.83848e-06
+
+           Step           Time
+          56000      112.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.08529e+01    5.33959e+01    1.01412e+01    7.21127e+00   -2.83617e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.71580e+01   -5.52444e+02    1.84793e+01    6.22866e+00   -6.72594e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.17729e+01   -6.00821e+02   -1.03802e+03    2.43163e+02   -2.15565e+02
+   Constr. rmsd
+    9.45658e-07
+
+           Step           Time
+          57000      114.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.82011e+00    2.08354e+01    9.61317e+00    4.70666e+00   -2.87735e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.62163e+01   -5.71006e+02    2.39839e+01    1.28028e+00   -7.25286e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.47414e+01   -6.60545e+02   -1.04994e+03    2.19341e+02   -1.10852e+02
+   Constr. rmsd
+    2.38397e-06
+
+           Step           Time
+          58000      116.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.68705e+00    2.88438e+01    1.11676e+01    5.28251e+00   -2.88342e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.05060e+02   -5.92158e+02    2.23763e+01    4.60836e+00   -6.96475e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.21894e+01   -6.24285e+02   -1.05268e+03    2.44574e+02    6.94239e+01
+   Constr. rmsd
+    6.13820e-06
+
+           Step           Time
+          59000      118.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.84877e+00    1.94768e+01    5.76624e+00    5.08882e+00   -2.80452e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.53229e+01   -5.82655e+02    2.65175e+01    5.64589e+00   -7.33440e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.05641e+02   -6.27798e+02   -1.05739e+03    3.57908e+02   -5.57883e+01
+   Constr. rmsd
+    2.67491e-06
+
+           Step           Time
+          60000      120.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.08657e+01    3.61197e+01    8.18655e+00    5.01564e+00   -2.85297e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.06624e+02   -6.34284e+02    2.21721e+01    4.51989e+00   -7.26078e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.58114e+01   -6.50266e+02   -1.06476e+03    2.56845e+02   -1.63994e+01
+   Constr. rmsd
+    7.47863e-07
+
+           Step           Time
+          61000      122.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.25873e+00    4.94227e+01    7.65530e+00    7.12551e+00   -2.85643e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.02997e+02   -6.42480e+02    2.35515e+01    5.47446e+00   -7.27637e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.96183e+01   -6.28019e+02   -1.07540e+03    3.37502e+02    1.37671e+01
+   Constr. rmsd
+    9.38944e-06
+
+           Step           Time
+          62000      124.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.99703e+00    3.66056e+01    7.97522e+00    1.07754e+01   -2.96099e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.66725e+01   -5.90991e+02    2.36854e+01    1.29966e+00   -7.13080e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.15416e+01   -6.41538e+02   -1.08494e+03    2.42380e+02    1.46671e+02
+   Constr. rmsd
+    3.41430e-06
+
+           Step           Time
+          63000      126.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.16775e+00    3.38505e+01    1.21615e+01    3.37076e+00   -2.83937e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.92249e+01   -5.91677e+02    2.14413e+01    5.20917e+00   -7.14188e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.55491e+01   -6.18639e+02   -1.09204e+03    3.23716e+02   -2.78753e+00
+   Constr. rmsd
+    2.26789e-06
+
+           Step           Time
+          64000      128.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.35719e+00    3.90107e+01    1.53723e+01    1.15416e+01   -2.95293e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.71102e+01   -5.38560e+02    2.21728e+01    6.38567e+00   -6.76902e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.03647e+02   -5.73255e+02   -1.10325e+03    3.51151e+02    5.43323e+00
+   Constr. rmsd
+    5.00780e-06
+
+           Step           Time
+          65000      130.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.84306e+00    2.63948e+01    1.69538e+01    6.82142e+00   -2.92339e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.17865e+01   -5.79517e+02    2.50237e+01    1.79739e+00   -7.01235e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.78228e+01   -6.23412e+02   -1.11564e+03    2.63660e+02    1.78703e+01
+   Constr. rmsd
+    4.30051e-06
+
+           Step           Time
+          66000      132.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.14135e+01    1.90300e+01    1.09960e+01    1.19974e+01   -2.99522e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.03390e+02   -5.87556e+02    2.07921e+01    5.30469e+00   -7.04155e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.84696e+01   -6.25685e+02   -1.11883e+03    2.65851e+02    2.07025e+02
+   Constr. rmsd
+    9.71600e-07
+
+           Step           Time
+          67000      134.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.53079e+00    2.39526e+01    1.33623e+01    8.76284e+00   -2.93085e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.74612e+01   -5.39716e+02    2.41363e+01    2.14910e+01   -6.87104e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.21337e+01   -5.94970e+02   -1.14613e+03    3.12145e+02   -1.87717e+01
+   Constr. rmsd
+    2.91532e-06
+
+           Step           Time
+          68000      136.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.97893e+00    1.84248e+01    1.07305e+01    6.42441e+00   -2.93184e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.63851e+01   -5.61028e+02    2.37314e+01    7.04130e+00   -7.08495e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.95441e+01   -6.08951e+02   -1.15982e+03    3.37251e+02   -3.46414e+01
+   Constr. rmsd
+    6.26999e-06
+
+           Step           Time
+          69000      138.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.43657e+00    1.59561e+01    1.08798e+01    5.35959e+00   -2.87495e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.33201e+01   -5.99398e+02    1.67467e+01    5.15195e+00   -7.55041e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.18866e+02   -6.36175e+02   -1.17090e+03    4.02713e+02   -5.30439e+01
+   Constr. rmsd
+    2.98193e-06
+
+           Step           Time
+          70000      140.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.83369e+00    1.41720e+01    9.13691e+00    7.19929e+00   -2.88993e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.61580e+01   -5.85418e+02    2.42978e+01    7.91023e+00   -7.21703e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.67758e+01   -6.34927e+02   -1.18455e+03    2.93992e+02    2.38832e+01
+   Constr. rmsd
+    1.09187e-06
+
+           Step           Time
+          71000      142.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.30180e+00    3.00187e+01    1.28806e+01    9.60544e+00   -2.90828e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.46148e+01   -5.44681e+02    2.47935e+01    6.27964e+00   -6.92014e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.28955e+01   -6.09119e+02   -1.20277e+03    2.80846e+02    4.61470e+01
+   Constr. rmsd
+    1.74650e-06
+
+           Step           Time
+          72000      144.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.45292e+00    3.87713e+01    1.37944e+01    2.83523e+00   -2.80707e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.17282e+01   -5.77875e+02    2.43939e+01    4.80153e+00   -6.85805e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.04386e+02   -5.81419e+02   -1.21117e+03    3.53654e+02   -5.01115e+01
+   Constr. rmsd
+    6.21793e-06
+
+           Step           Time
+          73000      146.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.55758e+00    2.62850e+01    1.27353e+01    6.32698e+00   -2.90698e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.70751e+01   -5.46046e+02    2.11789e+01    3.03546e+00   -7.05549e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.56771e+01   -6.19872e+02   -1.22077e+03    2.90270e+02   -1.13415e+02
+   Constr. rmsd
+    1.67439e-06
+
+           Step           Time
+          74000      148.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.44145e+00    2.96160e+01    1.17414e+01    4.82752e+00   -2.85777e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.02683e+02   -6.08188e+02    2.03164e+01    1.46633e+00   -7.17872e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.47363e+01   -6.33136e+02   -1.22920e+03    2.87083e+02    8.72448e+00
+   Constr. rmsd
+    2.64927e-06
+
+           Step           Time
+          75000      150.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.05739e+00    3.30225e+01    1.08154e+01    1.08430e+01   -2.93851e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.47402e+01   -5.78255e+02    2.46772e+01    3.90787e+00   -7.11042e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.09042e+02   -6.02000e+02   -1.23734e+03    3.69430e+02   -6.35143e+00
+   Constr. rmsd
+    2.99941e-06
+
+           Step           Time
+          76000      152.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.96999e+00    2.42679e+01    1.03614e+01    6.78834e+00   -2.90315e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.44947e+01   -5.55759e+02    1.77718e+01    6.13804e+00   -7.06282e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.61090e+01   -6.30173e+02   -1.24586e+03    2.57854e+02    9.16828e+01
+   Constr. rmsd
+    3.39373e-06
+
+           Step           Time
+          77000      154.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.77889e+01    2.64144e+01    1.04488e+01    7.81325e+00   -2.91431e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.56801e+01   -5.62547e+02    2.51362e+01    3.99157e+00   -6.86705e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.87747e+01   -5.87930e+02   -1.25781e+03    3.34644e+02   -7.49602e+01
+   Constr. rmsd
+    4.77826e-06
+
+           Step           Time
+          78000      156.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.93829e+00    1.47032e+01    1.08194e+01    5.24904e+00   -2.89670e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.13047e+01   -5.81834e+02    2.22516e+01    2.61571e+00   -7.19622e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.94570e+01   -6.40165e+02   -1.27644e+03    2.69197e+02   -2.86001e+01
+   Constr. rmsd
+    2.76430e-06
+
+           Step           Time
+          79000      158.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.82919e+00    3.10379e+01    9.66374e+00    5.52000e+00   -2.88042e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.23360e+01   -5.85778e+02    2.15640e+01    3.40710e+00   -7.07463e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.82586e+01   -6.29204e+02   -1.28288e+03    2.65137e+02    5.84424e+01
+   Constr. rmsd
+    1.69158e-06
+
+           Step           Time
+          80000      160.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.16649e+00    5.48405e+01    9.47898e+00    8.97000e+00   -2.91766e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.00392e+02   -6.21227e+02    1.90620e+01    3.77776e+00   -7.15306e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.51128e+01   -6.40193e+02   -1.28673e+03    2.54479e+02    7.17268e+01
+   Constr. rmsd
+    2.35829e-06
+
+           Step           Time
+          81000      162.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.12476e+00    2.58091e+01    1.12261e+01    4.84417e+00   -2.81986e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.71175e+01   -5.45202e+02    2.46453e+01    2.28176e+00   -7.06140e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.47683e+01   -6.21371e+02   -1.30020e+03    2.87191e+02   -1.01853e+02
+   Constr. rmsd
+    2.01362e-06
+
+           Step           Time
+          82000      164.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.48179e+00    2.47205e+01    1.13511e+01    5.15693e+00   -2.85634e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.13988e+01   -5.79665e+02    2.65648e+01    9.77272e-01   -7.07648e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.78964e+01   -6.19752e+02   -1.30742e+03    2.97789e+02   -1.36515e+01
+   Constr. rmsd
+    1.51008e-06
+
+           Step           Time
+          83000      166.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.32779e+00    2.21918e+01    7.84866e+00    6.33742e+00   -2.87490e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.04914e+01   -5.96688e+02    2.25999e+01    5.03456e+00   -7.27346e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.65412e+01   -6.40805e+02   -1.32062e+03    2.93198e+02    7.42663e+01
+   Constr. rmsd
+    4.77529e-06
+
+           Step           Time
+          84000      168.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.02725e+00    1.74951e+01    1.00687e+01    6.60835e+00   -2.90571e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.55185e+01   -5.83222e+02    1.80524e+01    4.69593e+00   -7.27327e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.05494e+01   -6.46777e+02   -1.33086e+03    2.72898e+02   -1.75704e+01
+   Constr. rmsd
+    5.98277e-06
+
+           Step           Time
+          85000      170.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.94052e+00    1.78818e+01    1.05958e+01    9.63855e+00   -2.91800e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.14968e+01   -5.40227e+02    1.94237e+01    7.84902e+00   -7.08201e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.81747e+01   -6.20026e+02   -1.34530e+03    2.98732e+02   -6.62498e+01
+   Constr. rmsd
+    5.30572e-06
+
+           Step           Time
+          86000      172.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.07081e+00    2.08433e+01    8.36942e+00    5.73267e+00   -2.89304e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.06150e+01   -5.57743e+02    2.31338e+01    5.96476e+00   -7.08318e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.43661e+01   -6.33951e+02   -1.35311e+03    2.51949e+02    1.23094e+01
+   Constr. rmsd
+    1.82035e-06
+
+           Step           Time
+          87000      174.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.80042e+00    2.68550e+01    9.58584e+00    8.88847e+00   -2.91865e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.00477e+01   -5.98817e+02    1.45122e+01    2.82773e+00   -7.30165e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.75583e+01   -6.52607e+02   -1.35910e+03    2.62764e+02   -7.63070e+01
+   Constr. rmsd
+    1.01603e-06
+
+           Step           Time
+          88000      176.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.18365e+01    3.11886e+01    9.60342e+00    1.20265e+01   -2.99625e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.16187e+01   -5.40095e+02    2.17359e+01    8.40419e-01   -6.90870e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.02120e+01   -6.20658e+02   -1.36514e+03    2.37875e+02    1.55280e+02
+   Constr. rmsd
+    1.63094e-06
+
+           Step           Time
+          89000      178.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.51413e+00    3.17631e+01    8.02653e+00    6.32990e+00   -2.88792e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.72029e+01   -5.55766e+02    1.92997e+01    4.52292e+00   -7.22899e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.85056e+01   -6.44394e+02   -1.37291e+03    2.65973e+02   -1.84652e+01
+   Constr. rmsd
+    1.02449e-06
+
+           Step           Time
+          90000      180.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.71682e+00    3.79856e+01    1.05745e+01    6.09685e+00   -2.89821e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.38454e+01   -5.61953e+02    1.89487e+01    2.22816e+00   -6.99378e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.07020e+02   -5.92358e+02   -1.38034e+03    3.62579e+02   -3.47939e+01
+   Constr. rmsd
+    2.71521e-06
+
+           Step           Time
+          91000      182.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.39988e+00    3.09054e+01    1.05614e+01    9.41504e+00   -2.93169e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.04153e+01   -5.31138e+02    2.34289e+01    3.32371e+00   -6.89857e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.67553e+01   -6.23102e+02   -1.38734e+03    2.26164e+02   -1.07476e+02
+   Constr. rmsd
+    3.10778e-06
+
+           Step           Time
+          92000      184.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.18502e+00    2.21077e+01    1.14574e+01    8.94021e+00   -2.96891e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.14092e+01   -5.16956e+02    2.08785e+01    2.02530e+00   -6.97844e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.67532e+01   -6.11091e+02   -1.39097e+03    2.93916e+02   -3.83771e+01
+   Constr. rmsd
+    3.48725e-06
+
+           Step           Time
+          93000      186.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.68916e+00    2.96302e+01    1.04043e+01    5.40002e+00   -2.86360e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.95732e+01   -5.31515e+02    3.64145e+01    4.61903e+00   -6.65145e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.47004e+01   -5.70445e+02   -1.40223e+03    3.20841e+02   -6.68557e+01
+   Constr. rmsd
+    1.70711e-06
+
+           Step           Time
+          94000      188.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.73946e+00    4.46624e+01    8.00781e+00    8.38883e+00   -2.89914e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.90748e+01   -5.85506e+02    2.49266e+01    6.51471e+00   -7.01105e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.92304e+01   -6.01875e+02   -1.41896e+03    3.36188e+02   -1.95162e+01
+   Constr. rmsd
+    2.46848e-06
+
+           Step           Time
+          95000      190.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.78638e+00    1.52790e+01    1.07946e+01    8.27745e+00   -2.89221e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.43195e+01   -5.59646e+02    1.95331e+01    1.43620e+00   -7.24441e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.28794e+01   -6.41561e+02   -1.43395e+03    2.80792e+02    6.40259e+00
+   Constr. rmsd
+    9.27231e-07
+
+           Step           Time
+          96000      192.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.68819e+00    1.54780e+01    7.33630e+00    5.83861e+00   -2.86213e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.48438e+01   -5.09924e+02    2.61943e+01    5.97261e+00   -6.85785e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.02911e+02   -5.82875e+02   -1.45121e+03    3.48656e+02   -7.18213e+01
+   Constr. rmsd
+    3.11227e-06
+
+           Step           Time
+          97000      194.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.29819e+00    2.05189e+01    8.79984e+00    4.79081e+00   -2.79474e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.72758e+01   -5.49313e+02    3.32602e+01    3.17444e+00   -7.06668e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.60102e+01   -6.40658e+02   -1.46309e+03    2.23639e+02   -4.74576e+01
+   Constr. rmsd
+    4.80400e-06
+
+           Step           Time
+          98000      196.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.70914e+00    1.32593e+01    9.99643e+00    3.35358e+00   -2.82395e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.20170e+01   -5.98218e+02    2.32640e+01    2.73732e+00   -7.40277e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.70673e+01   -6.53209e+02   -1.46712e+03    2.94980e+02   -9.79512e+01
+   Constr. rmsd
+    4.59591e-06
+
+           Step           Time
+          99000      198.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.51876e+00    3.80121e+01    1.10135e+01    5.22539e+00   -2.87596e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    3.12115e+01   -5.25560e+02    2.70697e+01    4.28308e+00   -6.86822e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.57624e+01   -5.91060e+02   -1.48044e+03    3.24439e+02   -1.38905e+02
+   Constr. rmsd
+    6.22438e-06
+
+           Step           Time
+         100000      200.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.91674e+00    3.72863e+01    1.04135e+01    3.04968e+00   -2.81160e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.20425e+02   -6.45329e+02    2.49533e+01    3.05332e+00   -7.21392e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.87018e+01   -6.22690e+02   -1.49170e+03    3.34397e+02    6.73938e+01
+   Constr. rmsd
+    5.36371e-06
+
+           Step           Time
+         101000      202.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.92613e+00    2.83073e+01    1.04410e+01    4.59457e+00   -2.83609e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.12568e+01   -5.82302e+02    2.36149e+01    3.64092e+00   -7.22129e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.43470e+01   -6.47782e+02   -1.49975e+03    2.51884e+02   -2.73975e+01
+   Constr. rmsd
+    4.96643e-06
+
+           Step           Time
+         102000      204.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.64332e+00    2.18812e+01    8.21204e+00    6.37935e+00   -2.87718e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    3.93511e+01   -5.33056e+02    2.51218e+01    2.53651e+00   -7.11649e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.20228e+01   -6.19626e+02   -1.50771e+03    3.11769e+02   -1.18869e+02
+   Constr. rmsd
+    3.72578e-06
+
+           Step           Time
+         103000      206.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.46136e+00    2.21016e+01    9.19180e+00    1.00792e+01   -2.94126e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.21765e+01   -5.66499e+02    2.05676e+01    4.66804e+00   -7.14378e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.09316e+02   -6.05062e+02   -1.51299e+03    3.70357e+02    1.74709e+01
+   Constr. rmsd
+    5.25628e-06
+
+           Step           Time
+         104000      208.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.49029e+00    3.53952e+01    1.09230e+01    2.22588e+00   -2.80099e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.87124e+01   -5.28875e+02    2.41320e+01    2.18261e+00   -6.80912e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.97432e+01   -5.91169e+02   -1.52859e+03    3.04046e+02   -9.80197e+00
+   Constr. rmsd
+    1.29377e-06
+
+           Step           Time
+         105000      210.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.05077e+01    3.52273e+01    9.84606e+00    3.46518e+00   -2.82830e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.09486e+02   -6.22713e+02    2.21995e+01    2.45448e+00   -7.12357e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.00295e+02   -6.12063e+02   -1.55148e+03    3.39793e+02   -9.28320e+00
+   Constr. rmsd
+    2.05306e-06
+
+           Step           Time
+         106000      212.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.47365e+00    1.95086e+01    8.93234e+00    7.11313e+00   -2.91219e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.13336e+02   -6.22528e+02    1.78460e+01    1.97470e+00   -7.37562e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.05369e+01   -6.57025e+02   -1.56451e+03    2.72855e+02    7.04239e+01
+   Constr. rmsd
+    2.77585e-06
+
+           Step           Time
+         107000      214.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.58073e+00    4.90250e+01    9.93695e+00    4.78504e+00   -2.79919e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.52742e+01   -6.22275e+02    1.95093e+01    7.14301e+00   -7.11940e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.44049e+01   -6.37535e+02   -1.58001e+03    2.52080e+02   -1.90195e+01
+   Constr. rmsd
+    3.00862e-06
+
+           Step           Time
+         108000      216.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.53035e+00    2.68010e+01    1.02145e+01    2.88953e+00   -2.82754e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.35001e+01   -5.50671e+02    2.00725e+01    5.21520e+00   -7.12201e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.58209e+01   -6.36380e+02   -1.58934e+03    2.56878e+02   -1.04526e+02
+   Constr. rmsd
+    4.13058e-06
+
+           Step           Time
+         109000      218.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.01052e+00    3.66228e+01    1.47952e+01    6.54006e+00   -2.90718e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.06192e+01   -5.87850e+02    2.20500e+01    3.26145e+00   -7.00669e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.02708e+01   -6.30398e+02   -1.59754e+03    2.38074e+02    5.93055e+01
+   Constr. rmsd
+    3.71958e-06
+
+           Step           Time
+         110000      220.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.63179e+00    2.65941e+01    9.63545e+00    2.75900e+00   -2.85270e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.16716e+01   -5.88779e+02    2.67223e+01    5.20183e+00   -7.13832e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.01979e+01   -6.43634e+02   -1.60996e+03    2.37827e+02    4.57870e+01
+   Constr. rmsd
+    1.54661e-06
+
+           Step           Time
+         111000      222.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.47913e+00    3.65491e+01    1.11588e+01    5.62136e+00   -2.86728e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.36807e+01   -5.80598e+02    2.56158e+01    1.81793e+00   -7.06404e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.95504e+01   -6.36853e+02   -1.61838e+03    2.35634e+02   -1.44197e+02
+   Constr. rmsd
+    2.29182e-06
+
+           Step           Time
+         112000      224.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.72616e+01    3.53680e+01    7.49331e+00    1.42935e+00   -2.76457e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.06534e+02   -6.45330e+02    1.81441e+01    2.05794e+00   -7.33499e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.83899e+01   -6.65109e+02   -1.62654e+03    2.31702e+02   -1.24325e+02
+   Constr. rmsd
+    1.58502e-06
+
+           Step           Time
+         113000      226.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.65753e+00    1.63776e+01    1.55009e+01    8.59945e+00   -2.93491e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.78345e+01   -6.08678e+02    1.79075e+01    2.12392e+00   -7.38168e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.68084e+01   -6.41359e+02   -1.63731e+03    3.27982e+02    1.23327e+02
+   Constr. rmsd
+    3.78136e-06
+
+           Step           Time
+         114000      228.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.80393e+00    4.42205e+01    1.46675e+01    3.29584e+00   -2.79753e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.07000e+01   -5.90566e+02    1.77800e+01    3.28608e+00   -7.18564e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.28083e+01   -6.25756e+02   -1.64545e+03    3.14430e+02   -2.06436e+02
+   Constr. rmsd
+    1.43759e-06
+
+           Step           Time
+         115000      230.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.76578e+00    5.07602e+01    7.88576e+00    1.31716e+01   -3.00515e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.26065e+01   -5.34149e+02    2.48825e+01    6.49039e+00   -6.72101e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.26535e+01   -6.09448e+02   -1.64564e+03    2.12267e+02    5.26940e+01
+   Constr. rmsd
+    1.69383e-06
+
+           Step           Time
+         116000      232.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.35734e+01    2.91087e+01    1.20042e+01    1.08146e+01   -2.95624e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.01963e+01   -5.55460e+02    1.94341e+01    2.54056e+00   -7.13411e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.10481e+02   -6.02930e+02   -1.65639e+03    3.74304e+02    1.12059e+02
+   Constr. rmsd
+    8.42184e-06
+
+           Step           Time
+         117000      234.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.27910e+00    3.66177e+01    1.07322e+01    1.31504e+00   -2.79323e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.91552e+01   -6.01571e+02    2.21514e+01    1.76256e+00   -7.21881e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.03806e+02   -6.18075e+02   -1.66412e+03    3.51690e+02   -8.38850e+01
+   Constr. rmsd
+    4.36808e-06
+
+           Step           Time
+         118000      236.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.14880e+01    1.94785e+01    9.46744e+00    5.00731e+00   -2.87733e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.67613e+01   -5.57667e+02    2.63548e+01    7.68718e+00   -6.69156e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.64515e+01   -5.82705e+02   -1.67223e+03    2.92894e+02    1.85339e+02
+   Constr. rmsd
+    1.36460e-06
+
+           Step           Time
+         119000      238.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.64716e+01    3.13475e+01    8.84159e+00    4.60574e+00   -2.86058e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.37948e+01   -5.44730e+02    1.97573e+01    9.20753e+00   -6.86762e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.08061e+02   -5.78702e+02   -1.68142e+03    3.66105e+02    5.41953e+01
+   Constr. rmsd
+    1.29847e-06
+
+           Step           Time
+         120000      240.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.17187e+00    3.47991e+01    1.11176e+01    5.65206e+00   -2.86945e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.06617e+01   -5.96604e+02    1.47935e+01    6.90086e+00   -7.33453e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.24768e+01   -6.40976e+02   -1.69514e+03    3.13307e+02   -1.05321e+02
+   Constr. rmsd
+    2.74542e-06
+
+           Step           Time
+         121000      242.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.60300e+01    3.00366e+01    8.45308e+00    8.26684e+00   -2.87535e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    3.35584e+01   -5.19230e+02    2.78568e+01    6.18436e+00   -6.66379e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.28002e+01   -5.73579e+02   -1.70267e+03    3.14403e+02    1.63313e+01
+   Constr. rmsd
+    4.23307e-06
+
+           Step           Time
+         122000      244.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.47257e+01    4.32574e+01    9.16200e+00    5.26260e+00   -2.84640e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.98905e+01   -5.72022e+02    2.66696e+01    6.35770e+00   -6.71337e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.87557e+01   -5.82581e+02   -1.71579e+03    3.00700e+02   -6.30356e+01
+   Constr. rmsd
+    2.94167e-06
+
+           Step           Time
+         123000      246.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.51569e+00    6.24172e+01    7.50759e+00    6.18024e+00   -2.83578e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.97861e+01   -5.84906e+02    1.96472e+01    2.51135e+00   -6.76919e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.65581e+01   -5.90361e+02   -1.72036e+03    2.93255e+02    1.00746e+02
+   Constr. rmsd
+    1.53723e-06
+
+           Step           Time
+         124000      248.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.73980e+00    5.01674e+01    1.06388e+01    6.45414e+00   -2.92473e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.20648e+01   -5.57565e+02    1.97803e+01    4.88815e+00   -6.77304e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.18983e+02   -5.58321e+02   -1.72584e+03    4.03110e+02   -1.17575e+00
+   Constr. rmsd
+    4.13328e-06
+
+           Step           Time
+         125000      250.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.77396e+00    3.19946e+01    7.97154e+00    8.44127e+00   -2.89945e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.09466e+01   -5.48397e+02    1.94715e+01    7.04891e+00   -6.98694e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.63084e+01   -6.12386e+02   -1.74081e+03    2.92409e+02   -4.14478e+01
+   Constr. rmsd
+    2.39025e-06
+
+           Step           Time
+         126000      252.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.16759e+00    3.54760e+01    1.11435e+01    3.52051e+00   -2.86018e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.61693e+01   -5.90336e+02    2.20315e+01    1.31977e+00   -7.32526e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.10866e+01   -6.41439e+02   -1.75176e+03    3.08597e+02   -5.72156e+01
+   Constr. rmsd
+    2.68145e-06
+
+           Step           Time
+         127000      254.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.21321e+00    3.42099e+01    1.32816e+01    2.08353e+01   -3.05853e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.54859e+01   -5.61955e+02    2.58778e+01    1.22006e+01   -6.93703e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.66573e+01   -5.97046e+02   -1.75822e+03    3.27470e+02    4.50141e+01
+   Constr. rmsd
+    4.68012e-06
+
+           Step           Time
+         128000      256.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.17050e+00    3.90091e+01    1.07214e+01    9.74202e+00   -2.92190e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.46431e+01   -5.37740e+02    2.35398e+01    4.11057e+00   -6.73993e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.05785e+02   -5.68208e+02   -1.76590e+03    3.58394e+02    1.22726e+02
+   Constr. rmsd
+    2.98279e-06
+
+           Step           Time
+         129000      258.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.75908e+00    2.73977e+01    1.26372e+01    3.79255e+00   -2.86553e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.44794e+01   -5.84606e+02    2.77861e+01    2.50836e+00   -7.15799e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.74938e+01   -6.48305e+02   -1.78218e+03    2.28666e+02    6.45110e+01
+   Constr. rmsd
+    1.89427e-06
+
+           Step           Time
+         130000      260.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.49323e+00    3.92106e+01    7.10934e+00    6.32102e+00   -2.87780e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.36847e+01   -5.53881e+02    2.01469e+01    4.64313e+00   -7.02052e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.02253e+02   -5.99799e+02   -1.79416e+03    3.46429e+02   -2.38839e+01
+   Constr. rmsd
+    1.73396e-06
+
+           Step           Time
+         131000      262.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.64450e+00    3.03708e+01    9.30118e+00    6.29790e+00   -2.88733e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.15643e+01   -5.64679e+02    2.43562e+01    2.79698e+00   -6.82080e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.59179e+01   -5.86162e+02   -1.80192e+03    3.24965e+02    1.41640e+02
+   Constr. rmsd
+    3.75063e-06
+
+           Step           Time
+         132000      264.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.30164e+00    1.34702e+01    1.10935e+01    5.93568e+00   -2.88959e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.39644e+01   -5.50154e+02    3.01866e+01    2.31324e+00   -7.19848e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.39002e+01   -6.35948e+02   -1.80818e+03    2.84250e+02   -7.00259e+01
+   Constr. rmsd
+    3.11781e-06
+
+           Step           Time
+         133000      266.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.89132e+00    3.01409e+01    1.15610e+01    9.68176e+00   -2.93359e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.20771e+01   -5.71191e+02    1.96303e+01    2.05032e+00   -7.12518e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.46817e+01   -6.17836e+02   -1.81623e+03    3.20777e+02    6.09501e+01
+   Constr. rmsd
+    2.54641e-06
+
+           Step           Time
+         134000      268.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.73900e+00    1.93729e+01    1.07857e+01    5.59950e+00   -2.87649e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.12584e+01   -5.53534e+02    2.44604e+01    8.60369e+00   -6.96364e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.91973e+01   -6.17167e+02   -1.82505e+03    2.68317e+02   -3.50025e+01
+   Constr. rmsd
+    5.37755e-06
+
+           Step           Time
+         135000      270.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.35741e+01    2.96910e+01    9.04879e+00    2.10891e+00   -2.80654e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.69753e+01   -5.84222e+02    3.53571e+01    3.22209e+00   -6.94899e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.06623e+02   -5.88277e+02   -1.83003e+03    3.61232e+02   -1.88422e+02
+   Constr. rmsd
+    4.77847e-06
+
+           Step           Time
+         136000      272.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.70309e+00    3.48865e+01    1.14233e+01    6.56720e+00   -2.88763e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.32639e+01   -5.28033e+02    2.95804e+01    5.52455e+00   -6.77847e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.57208e+01   -5.82126e+02   -1.84096e+03    3.24298e+02   -1.30223e+02
+   Constr. rmsd
+    1.15709e-06
+
+           Step           Time
+         137000      274.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.40196e+00    2.56596e+01    2.03116e+01    7.84640e+00   -2.94176e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.45997e+01   -5.14169e+02    2.95199e+01    6.75197e+00   -6.61255e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.61917e+01   -5.75063e+02   -1.85041e+03    2.92013e+02   -4.36185e+01
+   Constr. rmsd
+    2.73013e-06
+
+           Step           Time
+         138000      276.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.58912e+00    3.78629e+01    1.12965e+01    3.62465e+00   -2.85934e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.44506e+01   -5.78104e+02    2.21517e+01    2.68375e+00   -7.13379e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.19605e+01   -6.41418e+02   -1.85579e+03    2.43799e+02   -7.66600e+01
+   Constr. rmsd
+    4.32787e-06
+
+           Step           Time
+         139000      278.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.44871e+00    5.48400e+01    1.17563e+01    8.14017e+00   -2.94458e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.68569e+01   -5.89583e+02    1.90561e+01    4.97571e+00   -6.99967e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.01518e+02   -5.98449e+02   -1.86098e+03    3.43938e+02    2.10737e+01
+   Constr. rmsd
+    2.87306e-06
+
+           Step           Time
+         140000      280.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.45237e+00    2.35237e+01    9.75464e+00    6.61220e+00   -2.89011e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.78409e+01   -5.86972e+02    2.71017e+01    7.55314e+00   -7.05145e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.55375e+01   -6.29607e+02   -1.86971e+03    2.55918e+02    7.95387e+01
+   Constr. rmsd
+    1.79903e-06
+
+           Step           Time
+         141000      282.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.34917e+00    1.58746e+01    1.10541e+01    9.92064e+00   -2.96371e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.33440e+01   -5.77872e+02    2.17079e+01    1.32361e+00   -7.19668e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.80968e+01   -6.41572e+02   -1.88031e+03    2.64588e+02    1.93453e+01
+   Constr. rmsd
+    3.76016e-06
+
+           Step           Time
+         142000      284.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.51127e+00    3.66416e+01    9.34780e+00    7.51061e+00   -2.93596e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.02905e+01   -5.83873e+02    1.80705e+01    1.32143e+00   -7.19776e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.45689e+01   -6.35207e+02   -1.88558e+03    2.86515e+02    1.16119e+02
+   Constr. rmsd
+    3.44634e-06
+
+           Step           Time
+         143000      286.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.71683e+00    3.36332e+01    1.74010e+01    3.84656e+00   -2.82620e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.75413e+01   -6.06595e+02    2.14948e+01    2.73932e+00   -7.25842e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.23367e+01   -6.33505e+02   -1.89385e+03    3.12832e+02   -7.34468e+01
+   Constr. rmsd
+    2.91428e-06
+
+           Step           Time
+         144000      288.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.93855e+00    2.71908e+01    1.10593e+01    6.43787e+00   -2.91277e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.83283e+01   -5.85220e+02    2.72407e+01    1.44096e+00   -6.96861e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.04457e+02   -5.92404e+02   -1.89792e+03    3.53895e+02    4.21334e+01
+   Constr. rmsd
+    8.69939e-06
+
+           Step           Time
+         145000      290.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.43188e+01    3.61717e+01    1.03946e+01    4.76342e+00   -2.88730e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.79681e+01   -6.18611e+02    1.88124e+01    3.94876e+00   -7.20963e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.23328e+01   -6.38630e+02   -1.89905e+03    2.78940e+02   -4.87466e+01
+   Constr. rmsd
+    2.11492e-06
+
+           Step           Time
+         146000      292.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.70044e+00    3.30411e+01    8.73354e+00    5.52121e+00   -2.87479e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.98162e+01   -5.67261e+02    3.63042e+01    3.63928e+00   -7.02984e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.75940e+01   -6.25390e+02   -1.90644e+03    2.62885e+02   -5.99541e+01
+   Constr. rmsd
+    9.57922e-07
+
+           Step           Time
+         147000      294.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.24109e+00    2.91860e+01    9.57661e+00    8.91382e+00   -2.91958e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.26146e+01   -5.85272e+02    2.31195e+01    3.67531e+00   -7.28903e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.90313e+01   -6.29872e+02   -1.91661e+03    3.35514e+02    5.21656e+01
+   Constr. rmsd
+    4.14107e-06
+
+           Step           Time
+         148000      296.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.20971e-01    2.41409e+01    1.05533e+01    1.04381e+01   -2.97291e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.89462e+01   -5.31790e+02    2.36341e+01    2.16692e+00   -6.78881e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.51032e+01   -5.83778e+02   -1.92529e+03    3.22205e+02    5.41023e+01
+   Constr. rmsd
+    6.54466e-06
+
+           Step           Time
+         149000      298.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.74531e-01    4.95550e+01    1.24381e+01    6.09237e+00   -2.90400e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.14562e+01   -5.63641e+02    1.80270e+01    7.83473e+00   -6.97863e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.56164e+01   -6.02247e+02   -1.93704e+03    3.23944e+02   -1.98408e+01
+   Constr. rmsd
+    2.37074e-06
+
+           Step           Time
+         150000      300.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.03164e+00    4.04943e+01    1.07695e+01    5.03973e+00   -2.87432e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.25286e+02   -6.47770e+02    1.96901e+01    1.98286e+00   -7.23908e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.31245e+01   -6.40784e+02   -1.94780e+03    2.81622e+02    7.18990e+01
+   Constr. rmsd
+    2.44628e-06
+
+           Step           Time
+         151000      302.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.44411e+01    3.67932e+01    1.14697e+01    5.78391e+00   -2.89055e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.80287e+01   -6.08050e+02    1.99017e+01    2.56533e+00   -7.18121e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.65359e+01   -6.21585e+02   -1.95766e+03    3.27059e+02   -8.26968e+01
+   Constr. rmsd
+    2.35484e-06
+
+           Step           Time
+         152000      304.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.00392e+00    3.06263e+01    1.05164e+01    7.93533e+00   -2.93496e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.73829e+01   -5.89983e+02    2.25705e+01    5.33895e+00   -7.21104e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.11334e+01   -6.39971e+02   -1.96501e+03    2.74876e+02    9.82431e+01
+   Constr. rmsd
+    6.66092e-06
+
+           Step           Time
+         153000      306.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.25944e+00    2.55696e+01    9.81649e+00    4.39234e+00   -2.90600e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.49134e+01   -6.01123e+02    1.83257e+01    1.07009e+00   -7.29376e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.03270e+01   -6.59049e+02   -1.96827e+03    2.38264e+02   -9.32819e+01
+   Constr. rmsd
+    1.38344e-06
+
+           Step           Time
+         154000      308.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.80100e+00    2.32970e+01    1.18477e+01    1.26569e+01   -2.99272e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.43871e+01   -6.03153e+02    1.55731e+01    2.81371e+00   -7.49049e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.07285e+02   -6.41763e+02   -1.97822e+03    3.63478e+02    2.28383e+01
+   Constr. rmsd
+    1.65166e-06
+
+           Step           Time
+         155000      310.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.07896e+01    3.33921e+01    1.12333e+01    5.53814e+00   -2.90479e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.96786e+01   -5.95088e+02    1.78960e+01    2.09692e+00   -7.14943e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.80357e+01   -6.36907e+02   -1.98804e+03    2.64381e+02    2.77454e+01
+   Constr. rmsd
+    4.38842e-06
+
+           Step           Time
+         156000      312.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.23850e+00    4.49753e+01    1.00767e+01    3.68013e+00   -2.86462e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.43733e+01   -5.95651e+02    2.35769e+01    8.52567e-01   -7.20339e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.75750e+01   -6.22764e+02   -1.99725e+03    3.30580e+02    1.32264e+00
+   Constr. rmsd
+    1.92602e-06
+
+           Step           Time
+         157000      314.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.45584e+00    2.66850e+01    8.52442e+00    7.56983e+00   -2.91704e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.98945e+01   -5.49301e+02    1.97967e+01    3.16580e+00   -7.10914e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.02852e+02   -6.08061e+02   -2.00652e+03    3.48458e+02   -1.31779e+01
+   Constr. rmsd
+    1.63762e-06
+
+           Step           Time
+         158000      316.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.52374e+00    1.81925e+01    7.70918e+00    1.02837e+01   -2.91926e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.88626e+01   -5.56668e+02    1.96949e+01    5.72564e+00   -7.14601e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.11725e+01   -6.43429e+02   -2.01700e+03    2.41129e+02    5.56722e+00
+   Constr. rmsd
+    1.44516e-06
+
+           Step           Time
+         159000      318.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.54975e+00    3.48738e+01    1.28937e+01    4.64229e+00   -2.86560e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.73989e+01   -5.74024e+02    2.44159e+01    4.94745e+00   -6.98862e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.39826e+01   -6.24879e+02   -2.03088e+03    2.50650e+02   -4.36262e+01
+   Constr. rmsd
+    3.16466e-06
+
+           Step           Time
+         160000      320.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.52470e+00    3.10309e+01    1.27572e+01    4.52430e+00   -2.88777e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.42956e+01   -5.98000e+02    2.51167e+01    6.50648e-01   -7.34877e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.49374e+01   -6.39939e+02   -2.03702e+03    3.21644e+02   -1.57275e+01
+   Constr. rmsd
+    2.11071e-06
+
+           Step           Time
+         161000      322.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.65035e+00    4.23984e+01    8.66241e+00    3.41127e+00   -2.83138e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.50338e+01   -5.32426e+02    2.57132e+01    3.06353e+00   -6.71632e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.19607e+02   -5.52025e+02   -2.04111e+03    4.05221e+02   -5.94555e+01
+   Constr. rmsd
+    4.90768e-06
+
+           Step           Time
+         162000      324.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.41612e+00    2.97188e+01    1.20674e+01    5.77729e+00   -2.90060e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.24037e+01   -5.30876e+02    1.94522e+01    1.96119e+00   -6.84140e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.15570e+02   -5.68570e+02   -2.04810e+03    3.91545e+02    3.53865e+01
+   Constr. rmsd
+    8.05712e-06
+
+           Step           Time
+         163000      326.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.17604e+01    3.10050e+01    1.15915e+01    7.88025e+00   -2.89241e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.77983e+01   -5.70243e+02    1.89256e+01    1.78805e+00   -7.08734e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.47313e+01   -6.34003e+02   -2.05029e+03    2.53186e+02   -1.67403e+02
+   Constr. rmsd
+    2.31298e-06
+
+           Step           Time
+         164000      328.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.82107e+00    3.67033e+01    7.44761e+00    1.14833e+01   -2.90913e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.35629e+02   -6.47548e+02    1.87916e+01    7.65948e+00   -7.16926e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.71512e+01   -6.29774e+02   -2.06339e+03    2.95264e+02    1.22959e+02
+   Constr. rmsd
+    8.31095e-06
+
+           Step           Time
+         165000      330.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.43790e+00    3.45576e+01    1.17918e+01    5.42089e+00   -2.90851e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.87521e+01   -5.84613e+02    1.61146e+01    3.42564e+00   -7.23964e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.94283e+01   -6.44535e+02   -2.07149e+03    2.69100e+02    6.98253e+01
+   Constr. rmsd
+    2.19268e-06
+
+           Step           Time
+         166000      332.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.29765e+00    1.71558e+01    8.12808e+00    5.67367e+00   -2.85851e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.36926e+01   -6.20517e+02    2.61758e+01    8.04025e+00   -7.44205e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.16217e+02   -6.27988e+02   -2.08466e+03    3.93738e+02   -5.13585e+01
+   Constr. rmsd
+    1.21019e-05
+
+           Step           Time
+         167000      334.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.07077e+00    6.59582e+01    8.26361e+00    6.29798e+00   -2.89572e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.83460e+01   -5.51359e+02    2.86961e+01    8.75783e+00   -6.55540e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.11769e+02   -5.43771e+02   -2.09525e+03    3.78668e+02   -1.06980e+02
+   Constr. rmsd
+    3.91768e-06
+
+           Step           Time
+         168000      336.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.77347e+00    2.24305e+01    1.38944e+01    3.05000e+00   -2.84253e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.72842e+01   -5.47820e+02    2.83649e+01    1.60295e+01   -6.91246e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.64809e+01   -5.94765e+02   -2.10916e+03    3.26873e+02   -8.67607e+01
+   Constr. rmsd
+    1.95803e-06
+
+           Step           Time
+         169000      338.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.87128e+00    2.05643e+01    9.66359e+00    1.06289e+01   -2.93702e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.55670e+01   -5.53127e+02    1.70488e+01    4.86206e+00   -7.01624e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.74819e+01   -6.14142e+02   -2.11826e+03    2.96385e+02    1.48387e+01
+   Constr. rmsd
+    4.39432e-06
+
+           Step           Time
+         170000      340.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.45615e+00    2.21691e+01    9.82978e+00    5.51600e+00   -2.90377e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.52603e+01   -5.41090e+02    2.42669e+01    3.87718e+00   -7.03092e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    5.00205e+01   -6.53072e+02   -2.12565e+03    1.69467e+02    1.61442e+01
+   Constr. rmsd
+    3.27562e-06
+
+           Step           Time
+         171000      342.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.96138e+00    5.35639e+01    1.75204e+01    9.81250e+00   -2.92689e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.61442e+01   -5.78433e+02    2.01243e+01    5.51855e+00   -6.80477e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.03752e+01   -6.00102e+02   -2.12595e+03    2.72307e+02   -4.10459e+01
+   Constr. rmsd
+    5.60442e-06
+
+           Step           Time
+         172000      344.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.33186e+00    2.58954e+01    1.42223e+01    7.06867e+00   -2.94259e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.29820e+01   -5.66788e+02    1.83925e+01    3.61119e+00   -7.21542e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.56353e+01   -6.25907e+02   -2.13375e+03    3.24008e+02    1.13777e+02
+   Constr. rmsd
+    4.52620e-06
+
+           Step           Time
+         173000      346.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.89313e+00    2.54044e+01    1.28032e+01    7.59039e+00   -2.90976e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.52472e+01   -5.51865e+02    2.15986e+01    3.65754e+00   -7.03647e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.03343e+02   -6.00304e+02   -2.14144e+03    3.50121e+02    1.97485e+01
+   Constr. rmsd
+    3.67628e-06
+
+           Step           Time
+         174000      348.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.60566e+01    3.49097e+01    1.23100e+01    1.05343e+01   -2.94036e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.59093e+01   -5.70631e+02    2.25504e+01    5.42500e+00   -6.86971e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.23178e+02   -5.63793e+02   -2.14906e+03    4.17321e+02    1.04063e+02
+   Constr. rmsd
+    1.33983e-06
+
+           Step           Time
+         175000      350.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.08917e+00    4.78950e+01    1.00713e+01    5.80980e+00   -2.85241e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.56290e+01   -5.69696e+02    2.55609e+01    7.46589e+00   -6.77416e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.94420e+01   -6.07974e+02   -2.15344e+03    2.35266e+02   -1.05912e+00
+   Constr. rmsd
+    2.21959e-06
+
+           Step           Time
+         176000      352.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.73829e+00    3.44829e+01    8.65684e+00    5.23307e+00   -2.83960e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.73104e+01   -5.99895e+02    2.57760e+01    6.17467e+00   -7.11483e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.00349e+02   -6.11134e+02   -2.16633e+03    3.39977e+02    2.01117e+01
+   Constr. rmsd
+    1.03115e-06
+
+           Step           Time
+         177000      354.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.46427e+01    4.22339e+01    1.34694e+01    7.17186e+00   -2.92023e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.00165e+01   -5.35040e+02    1.79240e+01    3.72981e+00   -6.67876e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.07739e+02   -5.60137e+02   -2.17343e+03    3.65014e+02   -1.60832e+02
+   Constr. rmsd
+    3.74975e-06
+
+           Step           Time
+         178000      356.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.63084e+00    1.99379e+01    1.05517e+01    1.25824e+01   -3.02227e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.37164e+01   -5.87754e+02    1.94664e+01    6.26970e-01   -7.37468e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.01970e+01   -6.57271e+02   -2.17750e+03    2.71704e+02    8.20597e+01
+   Constr. rmsd
+    7.66298e-07
+
+           Step           Time
+         179000      358.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.29890e+01    2.82981e+01    9.69997e+00    7.70339e+00   -2.88201e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.64106e+01   -5.76597e+02    1.96238e+01    2.05122e+00   -7.18021e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.69069e+01   -6.21114e+02   -2.18812e+03    3.28316e+02   -1.22049e+02
+   Constr. rmsd
+    4.60595e-07
+
+           Step           Time
+         180000      360.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    8.36200e+00    3.58407e+01    1.09325e+01    8.29210e+00   -2.95911e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.80948e+01   -5.74383e+02    2.41719e+01    1.49845e+00   -7.03102e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.17650e+01   -6.31337e+02   -2.19575e+03    2.43136e+02   -4.65303e+01
+   Constr. rmsd
+    2.60562e-06
+
+           Step           Time
+         181000      362.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.16577e+01    3.17880e+01    1.41097e+01    7.71509e+00   -2.91148e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.05444e+01   -5.62833e+02    1.89516e+01    4.22185e+00   -7.04992e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.94306e+01   -6.15561e+02   -2.19590e+03    3.02987e+02   -8.67438e+01
+   Constr. rmsd
+    7.72545e-06
+
+           Step           Time
+         182000      364.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.07896e+00    2.92592e+01    7.96226e+00    6.69213e+00   -2.90325e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.01194e+01   -5.92042e+02    1.81022e+01    2.12988e+00   -7.29023e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.78829e+01   -6.31140e+02   -2.20866e+03    3.31623e+02   -6.98808e+01
+   Constr. rmsd
+    4.29868e-06
+
+           Step           Time
+         183000      366.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.94255e+00    3.26335e+01    6.92366e+00    4.48061e+00   -2.86107e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.60082e+01   -5.88843e+02    2.55350e+01    4.74308e+00   -7.08683e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.92928e+01   -6.29390e+02   -2.21396e+03    2.68640e+02   -1.05646e+02
+   Constr. rmsd
+    4.61987e-06
+
+           Step           Time
+         184000      368.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.96070e-01    4.45864e+01    1.17241e+01    5.63386e+00   -2.91917e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.18369e+01   -5.88101e+02    2.18340e+01    1.27631e+00   -7.12330e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.72404e+01   -6.25090e+02   -2.22200e+03    2.95566e+02    1.85145e+01
+   Constr. rmsd
+    4.97980e-06
+
+           Step           Time
+         185000      370.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.11867e+00    2.53336e+01    9.24441e+00    7.28228e+00   -2.89756e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.56148e+01   -5.99794e+02    2.48426e+01    6.58650e+00   -7.24527e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.06486e+01   -6.53879e+02   -2.22442e+03    2.39354e+02    8.96183e+00
+   Constr. rmsd
+    3.20459e-06
+
+           Step           Time
+         186000      372.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.05485e+00    2.68482e+01    7.09954e+00    4.99411e+00   -2.82931e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.42939e+01   -6.03564e+02    2.44134e+01    5.07250e+00   -7.29718e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.66908e+01   -6.53027e+02   -2.23105e+03    2.59825e+02    3.85484e+01
+   Constr. rmsd
+    4.03844e-06
+
+           Step           Time
+         187000      374.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.54555e+00    4.22282e+01    9.54781e+00    5.85061e+00   -2.92799e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.79638e+01   -5.84880e+02    1.77487e+01    4.33285e+00   -7.13462e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.81292e+01   -6.35333e+02   -2.23445e+03    2.64698e+02    4.80090e+01
+   Constr. rmsd
+    1.57522e-06
+
+           Step           Time
+         188000      376.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.78286e+00    3.90263e+01    9.60603e+00    4.47320e+00   -2.85307e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.02506e+02   -6.03046e+02    1.81402e+01    2.22459e+00   -7.08595e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.00790e+02   -6.07805e+02   -2.24167e+03    3.41470e+02    2.37633e+00
+   Constr. rmsd
+    3.31444e-06
+
+           Step           Time
+         189000      378.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.68484e+01    1.67976e+01    1.00689e+01    9.42560e+00   -2.91237e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.12580e+02   -6.22789e+02    2.04011e+01    2.92647e+00   -7.24978e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.12419e+01   -6.33736e+02   -2.24391e+03    3.09123e+02    7.29731e+01
+   Constr. rmsd
+    2.05738e-06
+
+           Step           Time
+         190000      380.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.19562e+00    1.37829e+01    1.08540e+01    5.68958e+00   -2.90597e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.60079e+01   -5.50091e+02    2.66361e+01    5.18828e+00   -7.09334e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.44658e+01   -6.24868e+02   -2.25111e+03    2.86166e+02   -2.23684e+01
+   Constr. rmsd
+    2.30881e-06
+
+           Step           Time
+         191000      382.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.34797e+00    2.68712e+01    9.01591e+00    6.39717e+00   -2.84685e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.89591e+01   -5.93135e+02    2.38146e+01    1.05534e+00   -7.37359e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.57373e+01   -6.51622e+02   -2.26164e+03    2.90474e+02   -4.62833e+01
+   Constr. rmsd
+    1.55854e-06
+
+           Step           Time
+         192000      384.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.07758e+00    1.73478e+01    1.00578e+01    4.38389e+00   -2.86642e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.76194e+01   -6.23477e+02    1.76793e+01    2.00124e+00   -7.54952e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.15048e+02   -6.39904e+02   -2.26729e+03    3.89776e+02    7.45332e+01
+   Constr. rmsd
+    2.14872e-06
+
+           Step           Time
+         193000      386.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.27636e+00    3.49493e+01    1.02706e+01    6.20103e+00   -2.90578e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.10867e+01   -5.94740e+02    2.28001e+01    1.72630e+00   -7.21008e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.45198e+01   -6.36488e+02   -2.27037e+03    2.86349e+02    1.57172e+02
+   Constr. rmsd
+    1.99144e-06
+
+           Step           Time
+         194000      388.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.30056e+01    3.83153e+01    1.02430e+01    3.22764e+00   -2.81727e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.06537e+01   -5.74164e+02    2.52359e+01    2.23118e+00   -7.02979e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.70390e+01   -6.15940e+02   -2.27791e+03    2.94884e+02   -2.07408e+02
+   Constr. rmsd
+    1.39203e-06
+
+           Step           Time
+         195000      390.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.00881e+00    2.89531e+01    9.34655e+00    2.69448e+00   -2.80040e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.13434e+01   -5.80858e+02    2.37891e+01    1.56883e+00   -7.28194e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.89142e+01   -6.59280e+02   -2.28708e+03    2.33478e+02   -1.43180e+02
+   Constr. rmsd
+    3.61250e-06
+
+           Step           Time
+         196000      392.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.99085e+01    3.50818e+01    1.21143e+01    6.12766e+00   -2.85552e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.75948e+01   -5.93803e+02    2.29843e+01    5.02984e+00   -7.00513e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.60323e+01   -6.24481e+02   -2.29489e+03    2.57594e+02   -6.84832e+01
+   Constr. rmsd
+    2.68486e-06
+
+           Step           Time
+         197000      394.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.40414e+01    2.65750e+01    7.55602e+00    1.01167e+01   -2.93345e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.69497e+01   -5.56449e+02    2.51100e+01    2.95013e+00   -7.06495e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.64691e+01   -6.30026e+02   -2.31657e+03    2.59074e+02    5.59138e+00
+   Constr. rmsd
+    3.29578e-06
+
+           Step           Time
+         198000      396.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.07110e+00    2.69547e+01    1.06742e+01    8.04769e+00   -2.94655e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.96053e+01   -5.69351e+02    1.90865e+01    2.48634e+00   -7.23080e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.47285e+01   -6.28352e+02   -2.32186e+03    3.20936e+02    5.94973e+01
+   Constr. rmsd
+    1.34380e-06
+
+           Step           Time
+         199000      398.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.59254e+00    2.34139e+01    1.15212e+01    5.15640e+00   -2.90052e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.47102e+01   -5.66973e+02    2.71738e+01    4.19249e+00   -7.01265e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.54306e+01   -6.25834e+02   -2.32532e+03    2.55555e+02    1.13748e+02
+   Constr. rmsd
+    1.18612e-06
+
+           Step           Time
+         200000      400.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.21124e+00    1.90957e+01    1.01094e+01    8.09711e+00   -2.91952e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.06396e+01   -5.65040e+02    2.28234e+01    2.00486e+00   -7.10010e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.66202e+01   -6.13390e+02   -2.33005e+03    3.27345e+02    6.62215e+00
+   Constr. rmsd
+    3.98887e-06
+
+           Step           Time
+         201000      402.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.60798e+00    2.80685e+01    7.88572e+00    9.33731e+00   -2.91314e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.54699e+01   -5.67923e+02    2.73969e+01    1.53730e+00   -7.02933e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.48945e+01   -6.38039e+02   -2.33619e+03    2.19859e+02    1.66903e+02
+   Constr. rmsd
+    2.14778e-06
+
+           Step           Time
+         202000      404.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.41782e+00    3.33369e+01    8.52838e+00    4.10090e+00   -2.86213e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.20095e+01   -5.70266e+02    2.26865e+01    2.67929e+00   -7.09720e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.51086e+01   -6.24611e+02   -2.34281e+03    2.88344e+02    4.22805e+01
+   Constr. rmsd
+    3.18943e-06
+
+           Step           Time
+         203000      406.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.59619e+01    2.39903e+01    8.61307e+00    5.55735e+00   -2.84397e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.86173e+01   -5.82476e+02    2.60013e+01    9.44215e-01   -6.97188e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.71179e+01   -6.20070e+02   -2.34830e+03    2.61272e+02    8.22892e+01
+   Constr. rmsd
+    6.51380e-07
+
+           Step           Time
+         204000      408.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.36098e+00    2.45447e+01    8.66743e+00    6.13323e+00   -2.88648e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.88378e+01   -5.72557e+02    2.41409e+01    5.47964e+00   -7.00040e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.53419e+01   -6.24698e+02   -2.35294e+03    2.55255e+02    7.72759e+01
+   Constr. rmsd
+    2.93484e-06
+
+           Step           Time
+         205000      410.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.33450e+01    2.73209e+01    1.26081e+01    1.19879e+01   -2.96996e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.06160e+01   -5.74215e+02    1.49642e+01    1.28501e+00   -7.09083e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.16814e+01   -6.17402e+02   -2.36074e+03    3.10612e+02    2.91377e+01
+   Constr. rmsd
+    5.86172e-07
+
+           Step           Time
+         206000      412.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.63729e+01    3.42616e+01    8.01125e+00    7.40185e+00   -2.86724e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.56022e+01   -5.93792e+02    2.78021e+01    4.18113e+00   -7.06882e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.96289e+01   -6.07253e+02   -2.36360e+03    3.37538e+02   -1.14977e+01
+   Constr. rmsd
+    4.48667e-06
+
+           Step           Time
+         207000      414.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.32023e+00    3.63805e+01    9.03434e+00    6.05974e+00   -2.91460e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.63499e+01   -5.89142e+02    1.39036e+01    2.25249e+00   -7.20301e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.12340e+01   -6.39067e+02   -2.37483e+03    2.75217e+02    7.83139e+01
+   Constr. rmsd
+    2.90896e-06
+
+           Step           Time
+         208000      416.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.40890e+00    2.66503e+01    7.88234e+00    1.02404e+01   -2.94882e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.24883e+01   -5.48302e+02    2.02679e+01    2.65461e+00   -6.90591e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.06748e+01   -6.19916e+02   -2.38003e+03    2.39443e+02    7.41231e+01
+   Constr. rmsd
+    2.83617e-06
+
+           Step           Time
+         209000      418.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.75734e+00    3.50803e+01    1.08500e+01    3.24994e+00   -2.82357e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.23829e+02   -6.61344e+02    1.70310e+01    2.59041e+00   -7.47313e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.13014e+02   -6.34299e+02   -2.38758e+03    3.82886e+02    7.60297e+00
+   Constr. rmsd
+    3.07396e-06
+
+           Step           Time
+         210000      420.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.71314e+00    4.37429e+01    9.62514e+00    1.18240e+01   -3.00668e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.77904e+01   -5.94193e+02    1.79749e+01    3.00376e+00   -7.05187e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.13158e+01   -6.13871e+02   -2.39342e+03    3.09374e+02    8.39172e+01
+   Constr. rmsd
+    2.96718e-06
+
+           Step           Time
+         211000      422.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.38532e+00    2.82779e+01    1.37159e+01    1.17717e+01   -2.96301e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.60871e+01   -5.94464e+02    1.32551e+01    1.79547e+00   -7.33477e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.90014e+01   -6.64475e+02   -2.40389e+03    2.33773e+02    2.05830e+01
+   Constr. rmsd
+    4.53796e-06
+
+           Step           Time
+         212000      424.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.86304e+00    2.92688e+01    1.02057e+01    5.71605e+00   -2.86984e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.29890e+01   -5.83116e+02    2.05470e+01    4.17063e+00   -7.07340e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.07138e+02   -6.00202e+02   -2.41169e+03    3.62977e+02    8.25265e+01
+   Constr. rmsd
+    3.00364e-06
+
+           Step           Time
+         213000      426.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.77284e+00    3.33803e+01    9.86185e+00    8.75884e+00   -2.94385e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.42194e+01   -5.92356e+02    2.46006e+01    2.28833e+00   -7.23858e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.19392e+01   -6.41919e+02   -2.42267e+03    2.77606e+02    1.01476e+02
+   Constr. rmsd
+    1.35208e-06
+
+           Step           Time
+         214000      428.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.03604e+00    2.44994e+01    1.00800e+01    3.52265e+00   -2.81344e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.94804e+01   -5.88370e+02    2.14546e+01    2.39308e+00   -7.15248e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.70395e+01   -6.28209e+02   -2.42896e+03    2.94886e+02   -1.80227e+01
+   Constr. rmsd
+    2.20606e-06
+
+           Step           Time
+         215000      430.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.95467e+00    5.12412e+01    7.88444e+00    3.91948e+00   -2.83011e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.03781e+01   -6.11437e+02    2.04436e+01    2.94061e+00   -7.23686e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.77007e+01   -6.25985e+02   -2.43622e+03    3.31005e+02   -3.17198e+00
+   Constr. rmsd
+    1.76859e-06
+
+           Step           Time
+         216000      432.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.43501e+00    3.85793e+01    7.34580e+00    4.49780e+00   -2.78753e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.08276e+01   -6.13302e+02    2.41492e+01    3.99611e+00   -7.40224e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.83386e+01   -6.61885e+02   -2.44206e+03    2.65407e+02   -8.75628e+01
+   Constr. rmsd
+    1.73893e-06
+
+           Step           Time
+         217000      434.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.06626e+00    3.29743e+01    1.05230e+01    4.42392e+00   -2.83624e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    9.16753e+01   -6.10036e+02    2.33987e+01    1.46060e+00   -7.25138e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.84815e+01   -6.36657e+02   -2.44475e+03    2.99771e+02   -6.91832e+01
+   Constr. rmsd
+    1.68723e-06
+
+           Step           Time
+         218000      436.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.07267e+00    1.30475e+01    1.28701e+01    6.53919e+00   -2.91819e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.41449e+01   -5.59364e+02    1.97500e+01    4.11095e+00   -7.17647e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.72152e+01   -6.40432e+02   -2.44870e+03    2.61602e+02   -5.07249e+01
+   Constr. rmsd
+    3.48223e-06
+
+           Step           Time
+         219000      438.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.36186e+00    2.07961e+01    9.99193e+00    6.90028e+00   -2.91866e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.15975e+01   -5.37202e+02    2.90457e+01    2.52756e+00   -6.84847e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.58338e+01   -5.99013e+02   -2.45806e+03    2.90801e+02    6.97757e+01
+   Constr. rmsd
+    7.82035e-06
+
+           Step           Time
+         220000      440.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.78210e+00    3.31062e+01    9.66114e+00    3.32921e+00   -2.86814e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.67460e+01   -6.01446e+02    2.57102e+01    3.00133e+00   -7.16923e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.56999e+01   -6.31224e+02   -2.46301e+03    2.90347e+02    1.41580e+02
+   Constr. rmsd
+    1.84582e-06
+
+           Step           Time
+         221000      442.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.18344e+00    2.95592e+01    9.28082e+00    7.36747e+00   -2.94765e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.95839e+01   -5.55664e+02    1.89907e+01    5.10524e+00   -6.94358e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.98474e+01   -5.94511e+02   -2.46925e+03    3.38278e+02    1.21393e+02
+   Constr. rmsd
+    4.96127e-06
+
+           Step           Time
+         222000      444.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.00176e+00    2.67204e+01    9.59752e+00    6.55257e+00   -2.88563e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.01716e+01   -5.61585e+02    1.96865e+01    3.14281e+00   -7.18274e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.88667e+01   -6.19408e+02   -2.47445e+03    3.34956e+02   -4.85821e+01
+   Constr. rmsd
+    8.24470e-06
+
+           Step           Time
+         223000      446.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.80596e+01    3.76890e+01    1.20447e+01    9.76354e+00   -2.93438e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.44392e+01   -5.47418e+02    1.88799e+01    3.27492e+00   -6.86705e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.55918e+01   -5.91113e+02   -2.47989e+03    3.23860e+02   -6.43934e+01
+   Constr. rmsd
+    1.99335e-06
+
+           Step           Time
+         224000      448.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.13668e+00    1.46890e+01    1.09317e+01    7.02636e+00   -2.91600e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.08472e+01   -5.37911e+02    2.79227e+01    2.63567e+00   -7.12322e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.29764e+01   -6.29346e+02   -2.48954e+03    2.81120e+02    1.13020e+01
+   Constr. rmsd
+    4.48548e-06
+
+           Step           Time
+         225000      450.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.63450e+00    1.61793e+01    9.68461e+00    9.05728e+00   -2.94100e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.97413e+01   -5.58210e+02    1.92912e+01    3.59240e+00   -7.30130e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.18061e+01   -6.38323e+02   -2.49899e+03    3.11035e+02   -1.08925e+01
+   Constr. rmsd
+    3.43660e-06
+
+           Step           Time
+         226000      452.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.60583e+01    3.04368e+01    9.78019e+00    3.58765e+00   -2.76630e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.75101e+01   -5.59264e+02    2.93246e+01    6.51304e+00   -6.62683e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.84796e+01   -5.84204e+02   -2.50339e+03    2.65885e+02   -2.60304e+02
+   Constr. rmsd
+    2.95535e-06
+
+           Step           Time
+         227000      454.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.78540e+00    2.85864e+01    1.12818e+01    6.17683e+00   -2.87354e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.22544e+02   -6.26850e+02    2.49448e+01    2.52022e+00   -7.13365e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.68806e+01   -6.36484e+02   -2.51690e+03    2.60468e+02    1.07297e+02
+   Constr. rmsd
+    1.49386e-06
+
+           Step           Time
+         228000      456.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.51053e+00    2.68693e+01    9.23258e+00    4.54869e+00   -2.85028e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.95421e+01   -5.89390e+02    2.37165e+01    1.28695e+00   -7.32711e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.60673e+01   -6.56644e+02   -2.52541e+03    2.57712e+02    1.39976e+00
+   Constr. rmsd
+    1.78715e-06
+
+           Step           Time
+         229000      458.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.78384e+00    3.36921e+01    1.04955e+01    4.28944e+00   -2.86626e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.73073e+01   -5.82305e+02    2.06471e+01    2.27817e+00   -7.14438e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.21187e+02   -5.93250e+02   -2.53070e+03    4.10578e+02   -7.25360e+01
+   Constr. rmsd
+    6.21605e-06
+
+           Step           Time
+         230000      460.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    6.26464e+00    3.06421e+01    1.17682e+01    8.18162e+00   -2.92375e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.92371e+01   -5.70068e+02    2.72536e+01    2.93758e+00   -6.96157e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.67081e+01   -6.19449e+02   -2.53097e+03    2.59883e+02   -1.61239e+01
+   Constr. rmsd
+    2.19372e-06
+
+           Step           Time
+         231000      462.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.34477e+01    1.50215e+01    6.13668e+00    7.79220e+00   -2.84205e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.36800e+01   -5.75980e+02    2.17857e+01    4.93002e+00   -7.27391e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.26144e+01   -6.34777e+02   -2.53807e+03    3.13773e+02   -1.75856e+02
+   Constr. rmsd
+    3.67580e-06
+
+           Step           Time
+         232000      464.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.78408e+01    2.62323e+01    1.00471e+01    1.11239e+01   -2.94293e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.89889e+01   -5.75432e+02    1.88015e+01    2.63769e+00   -7.04053e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.90313e+01   -6.15021e+02   -2.54586e+03    3.01634e+02    9.41517e+01
+   Constr. rmsd
+    3.66543e-06
+
+           Step           Time
+         233000      466.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.73248e+01    3.02510e+01    9.84805e+00    7.23382e+00   -2.93942e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.05065e+01   -5.72274e+02    1.95639e+01    5.57836e+00   -6.95910e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.01294e+02   -5.94616e+02   -2.56629e+03    3.43178e+02   -4.57268e+00
+   Constr. rmsd
+    3.06055e-06
+
+           Step           Time
+         234000      468.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.01230e+01    2.79626e+01    1.15124e+01    3.96418e+00   -2.86753e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.04909e+01   -5.57634e+02    2.41301e+01    2.44318e+00   -7.03761e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.00536e+01   -6.23708e+02   -2.57645e+03    2.71218e+02   -3.98091e+01
+   Constr. rmsd
+    1.22132e-06
+
+           Step           Time
+         235000      470.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.66236e+00    1.92611e+01    1.02457e+01    3.83044e+00   -2.85868e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.41755e+01   -5.53190e+02    2.97844e+01    5.28893e+00   -6.92809e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.01972e+02   -5.90837e+02   -2.58221e+03    3.45477e+02   -8.97837e+01
+   Constr. rmsd
+    2.22906e-06
+
+           Step           Time
+         236000      472.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.50611e+00    3.47505e+01    1.15464e+01    7.88815e+00   -2.94764e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.90712e+01   -5.43473e+02    2.32111e+01    1.07879e+01   -6.81476e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.18168e+02   -5.63308e+02   -2.58675e+03    4.00348e+02    6.53132e+01
+   Constr. rmsd
+    3.90847e-06
+
+           Step           Time
+         237000      474.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.70210e+00    2.95958e+01    1.67681e+01    3.64874e+00   -2.81337e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.73997e+01   -5.54321e+02    2.34177e+01    2.46364e+00   -7.08662e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.39939e+01   -6.24668e+02   -2.59739e+03    2.84567e+02   -1.77738e+02
+   Constr. rmsd
+    1.54266e-06
+
+           Step           Time
+         238000      476.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.22004e+01    3.82079e+01    1.19936e+01    5.18406e+00   -2.87593e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.38719e+01   -5.19459e+02    2.55939e+01    6.85354e+00   -6.63146e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.57023e+01   -5.87444e+02   -2.60149e+03    2.56476e+02   -1.13583e+02
+   Constr. rmsd
+    2.81037e-06
+
+           Step           Time
+         239000      478.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.74150e+01    2.97696e+01    1.69461e+01    4.24935e+00   -2.86974e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.39779e+01   -5.91840e+02    2.69290e+01    3.78013e+00   -6.95747e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.18229e+01   -6.03924e+02   -2.61206e+03    3.11092e+02   -4.47205e+00
+   Constr. rmsd
+    5.60872e-06
+
+           Step           Time
+         240000      480.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    9.63587e+00    2.13994e+01    1.29567e+01    1.75972e+00   -2.79608e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.86539e+01   -6.07715e+02    2.35365e+01    9.75303e-01   -7.28405e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.02518e+01   -6.48153e+02   -2.62583e+03    2.71889e+02   -1.16731e+02
+   Constr. rmsd
+    4.46683e-06
+
+           Step           Time
+         241000      482.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    5.76972e+00    4.38490e+01    1.82394e+01    5.22878e+00   -2.89416e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.28533e+01   -5.82399e+02    2.28787e+01    1.69914e+00   -7.11297e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.04755e+02   -6.06542e+02   -2.63057e+03    3.54904e+02    4.45420e+01
+   Constr. rmsd
+    2.39544e-06
+
+           Step           Time
+         242000      484.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    2.64070e+00    4.07674e+01    1.25506e+01    5.31458e+00   -2.89795e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.73648e+01   -5.64366e+02    2.39512e+01    2.60758e+00   -7.08964e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    6.45221e+01   -6.44442e+02   -2.63245e+03    2.18598e+02   -7.73946e+01
+   Constr. rmsd
+    1.09001e-06
+
+           Step           Time
+         243000      486.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.11597e+00    4.54039e+01    1.36607e+01    7.82164e+00   -2.91138e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    8.04492e+01   -5.73841e+02    1.53471e+01    8.24510e+00   -6.89935e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.16968e+01   -6.08238e+02   -2.64376e+03    2.76785e+02   -2.09183e+01
+   Constr. rmsd
+    2.41443e-06
+
+           Step           Time
+         244000      488.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.47979e+01    4.62791e+01    1.14733e+01    7.31036e+00   -2.88343e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.19284e+01   -5.53704e+02    2.27645e+01    3.95284e+00   -6.83540e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.01770e+02   -5.81770e+02   -2.65977e+03    3.44792e+02   -1.51440e+02
+   Constr. rmsd
+    1.08113e-06
+
+           Step           Time
+         245000      490.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    3.46217e+00    3.05251e+01    8.02681e+00    5.78665e+00   -2.87754e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    1.04839e+02   -6.28596e+02    2.22730e+01    6.49380e+00   -7.34943e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.12644e+02   -6.22299e+02   -2.67739e+03    3.81633e+02    6.93457e+01
+   Constr. rmsd
+    2.68344e-06
+
+           Step           Time
+         246000      492.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.51780e+00    3.42920e+01    9.24678e+00    5.51127e+00   -2.84154e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.51719e+01   -5.77092e+02    2.39937e+01    3.27813e+00   -7.25234e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    7.58922e+01   -6.49341e+02   -2.69059e+03    2.57119e+02   -2.10026e+01
+   Constr. rmsd
+    2.02230e-06
+
+           Step           Time
+         247000      494.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.46704e+00    3.47739e+01    9.14217e+00    8.35844e+00   -2.92391e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.63384e+01   -5.87467e+02    1.31435e+01    4.28667e+00   -7.26348e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.00581e+02   -6.25767e+02   -2.70142e+03    3.40764e+02   -6.83454e+00
+   Constr. rmsd
+    2.14837e-06
+
+           Step           Time
+         248000      496.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    4.50172e+00    3.87871e+01    9.37622e+00    7.96002e+00   -2.91310e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    4.36184e+01   -5.51697e+02    2.29195e+01    7.57713e+00   -7.08266e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.63584e+01   -6.11908e+02   -2.70940e+03    3.26458e+02    1.75526e+01
+   Constr. rmsd
+    2.61757e-06
+
+           Step           Time
+         249000      498.00000
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.07610e+01    5.66323e+01    9.94187e+00    3.90203e+00   -2.86456e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    6.65462e+01   -5.84726e+02    1.95625e+01    3.33249e+00   -7.00503e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    1.02567e+02   -5.97936e+02   -2.72061e+03    3.47493e+02   -6.63686e+01
+   Constr. rmsd
+    5.47668e-06
+
+           Step           Time
+         250000      500.00000
+
+Writing checkpoint, step 250000 at Sun May 18 15:53:45 2025
+
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    1.81824e+00    1.03472e+01    1.10477e+01    6.91613e+00   -2.90698e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    5.83972e+01   -5.36515e+02    2.19620e+01    1.78980e+00   -7.14935e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    9.26696e+01   -6.22265e+02   -2.73140e+03    3.13960e+02   -3.57749e+01
+   Constr. rmsd
+    3.93636e-06
+
+
+Energy conservation over simulation part #1 of length 500 ps, time 0 to 500 ps
+  Conserved energy drift: -1.23e-01 kJ/mol/ps per atom
+
+
+	<======  ###############  ==>
+	<====  A V E R A G E S  ====>
+	<==  ###############  ======>
+
+	Statistics over 250001 steps using 2501 frames
+
+   Energies (kJ/mol)
+           Bond          Angle Ryckaert-Bell.          LJ-14     Coulomb-14
+    7.09356e+00    3.19383e+01    1.03570e+01    6.75656e+00   -2.88894e+02
+        LJ (SR)   Coulomb (SR)   Coul. recip. Position Rest.      Potential
+    7.58273e+01   -5.77017e+02    2.24514e+01    3.67034e+00   -7.07816e+02
+    Kinetic En.   Total Energy  Conserved En.    Temperature Pressure (bar)
+    8.83227e+01   -6.19494e+02   -1.68444e+03    2.99233e+02   -5.05588e-01
+   Constr. rmsd
+    0.00000e+00
+
+          Box-X          Box-Y          Box-Z
+    2.94289e+00    2.94289e+00    2.94289e+00
+
+   Total Virial (kJ/mol)
+    3.08852e+01   -1.06845e+00    9.70254e-01
+   -1.06777e+00    2.91099e+01   -2.10302e+00
+    9.72869e-01   -2.10055e+00    2.95317e+01
+
+   Pressure (bar)
+   -2.66127e+00    1.84702e+00   -2.78078e+00
+    1.84614e+00    2.14088e+00    1.65123e+00
+   -2.78419e+00    1.64802e+00   -9.96380e-01
+
+
+	M E G A - F L O P S   A C C O U N T I N G
+
+ NB=Group-cutoff nonbonded kernels    NxN=N-by-N cluster Verlet kernels
+ RF=Reaction-Field  VdW=Van der Waals  QSTab=quadratic-spline table
+ W3=SPC/TIP3p  W4=TIP4p (single or pairs)
+ V&F=Potential and force  V=Potential only  F=Force only
+
+ Computing:                               M-Number         M-Flops  % Flops
+-----------------------------------------------------------------------------
+ Pair Search distance check               1.673888          15.065     0.0
+ NxN Ewald Elec. + LJ [F]               143.160336        9448.582     0.9
+ NxN Ewald Elec. + LJ [V&F]               1.446624         154.789     0.0
+ NxN Ewald Elec. [F]                     86.519664        5277.700     0.5
+ NxN Ewald Elec. [V&F]                    0.874304          73.442     0.0
+ 1,4 nonbonded interactions               6.000024         540.002     0.1
+ Calc Weights                            25.500102         918.004     0.1
+ Spread Q Bspline                       544.002176        1088.004     0.1
+ Gather F Bspline                       544.002176        3264.013     0.3
+ 3D-FFT                              108840.435360      870723.483    85.0
+ Solve PME                             2031.258125      130000.520    12.7
+ Reset In Box                             0.085000           0.255     0.0
+ CG-CoM                                   0.085034           0.255     0.0
+ Bonds                                    1.250005          73.750     0.0
+ Angles                                   5.250021         882.004     0.1
+ RB-Dihedrals                             5.000020        1235.005     0.1
+ Pos. Restr.                              1.500006          75.000     0.0
+ Virial                                   0.197579           3.556     0.0
+ Stop-CM                                  0.085034           0.850     0.0
+ P-Coupling                               0.085034           0.510     0.0
+ Calc-Ekin                                1.700068          45.902     0.0
+ Lincs                                    1.750007         105.000     0.0
+ Lincs-Mat                               15.000060          60.000     0.0
+ Constraint-V                             8.750035          78.750     0.0
+ Constraint-Vir                           0.070028           1.681     0.0
+ Settle                                   1.750007         647.503     0.1
+-----------------------------------------------------------------------------
+ Total                                                 1024713.625   100.0
+-----------------------------------------------------------------------------
+
+
+    D O M A I N   D E C O M P O S I T I O N   S T A T I S T I C S
+
+ av. #atoms communicated per step for force:  2 x 0.0
+
+
+      R E A L   C Y C L E   A N D   T I M E   A C C O U N T I N G
+
+On 1 MPI rank, each using 30 OpenMP threads
+
+ Activity:              Num   Num      Call    Wall time         Giga-Cycles
+                        Ranks Threads  Count      (s)         total sum    %
+--------------------------------------------------------------------------------
+ Domain decomp.            1   30       2500       0.265         23.759   0.8
+ Neighbor search           1   30       2501       0.058          5.198   0.2
+ Force                     1   30     250001       5.037        452.257  15.4
+ PME mesh                  1   30     250001      20.770       1864.849  63.6
+ NB X/F buffer ops.        1   30     500002       2.211        198.560   6.8
+ Write traj.               1   30        251       0.008          0.723   0.0
+ Update                    1   30     250001       1.431        128.483   4.4
+ Constraints               1   30     250001       1.998        179.377   6.1
+ Kinetic energy            1   30      50001       0.201         18.060   0.6
+ Rest                                              0.695         62.392   2.1
+--------------------------------------------------------------------------------
+ Total                                            32.673       2933.657 100.0
+--------------------------------------------------------------------------------
+ Breakdown of PME mesh activities
+--------------------------------------------------------------------------------
+ PME spread                1   30     250001       9.324        837.214  28.5
+ PME gather                1   30     250001       3.708        332.965  11.3
+ PME 3D-FFT                1   30     500002       7.143        641.371  21.9
+ PME solve Elec            1   30     250001       0.242         21.698   0.7
+--------------------------------------------------------------------------------
+
+               Core t (s)   Wall t (s)        (%)
+       Time:      980.195       32.673     3000.0
+                 (ns/day)    (hour/ns)
+Performance:     1322.187        0.018
+Finished mdrun on rank 0 Sun May 18 15:53:45 2025
+
