@@ -126,7 +126,7 @@ write_xyz(rotated_xyz_path, rotated_coords, elements)
 # ===================================================================================
 
 with open(output_path, 'w') as f:
-    f.write("tolerance 2.0\nfiletype xyz\noutput case_{index}.xyz\n\n")
+    f.write("tolerance 3.0\nfiletype xyz\noutput case_{index}.xyz\n\n")
     
     # 중심 분자 고정 배치
     f.write(f"structure ../{rotated_xyz_path}\n")
