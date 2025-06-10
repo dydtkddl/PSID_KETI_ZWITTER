@@ -1,5 +1,5 @@
 import numpy as np
-'''coords[0]은 40 x 3 리스트. 이때 0,1 ,12번 인덱스 위치를 가지고 평면벡터를 만들거야 그리고 그 평면벡터를 xy 평면으로 놓이게끔할거고
+'''coords[0]은 40 x 3 리스트. 이때 5,8,11번 인덱스 위치를 가지고 평면벡터를 만들거야 그리고 그 평면벡터를 xy 평면으로 놓이게끔할거고
 이떄 12번 원자->1번원자 벡터가 x축과평행하며 12번원자는 원점에 놓일거야
 전체 시스템을 돌리고 평행이동시켜서 align시키는 코드 '''
 import matplotlib.pyplot as plt
@@ -268,34 +268,72 @@ import numpy as np
 point_12 = np.array(newcoord[12])
 point_16 = np.array(newcoord[16])
 
-distance = np.linalg.norm(point_12 - point_16)
-print(distance)
-if distance <= 1:
+# distance = np.linalg.norm(point_12 - point_16)
+# print(distance)
+# if distance <= 1:
     # 예시 좌표 데이터로 실행
-    aligned, original, triangle_pts, normal_vec = align_frame(coords[-1],[15,20,21])
-    # 시각화 실행
-    # plot_before_after_mpl(original, aligned, triangle_pts, normal_vec)
-    plot_before_after_plotly(original, aligned, triangle_pts, normal_vec,[15,20,21], True, False)
+aligned, original, triangle_pts, normal_vec = align_frame(coords[-1],[4,7,10])
+# 시각화 실행
+# plot_before_after_mpl(original, aligned, triangle_pts, normal_vec)
+plot_before_after_plotly(original, aligned, triangle_pts, normal_vec,[4,7,10], True, False)
 
-    aligns = []
-    atoms = ["S","S","F","F","F","F","F","F","O","O","O","O","N","C","C","N","N","C","C","C","C","C","C","C","C","H","H","H","H","H","H","H","H","H","H","H","H","H","H","H" ]
-    xyzfiles = []
-    for c in coords: 
-        xyzfile = f'''{len(atoms)}\n\n'''
-        aligned, original, triangle_pts, normal_vec = align_frame(c,[15,20,21])
-        aligns.append(aligned)
-        flip = ( list(aligned)[12][2] < 0  )
-        for atom, line in zip ( atoms, aligned): 
-            xxx = [x*10 for x in line]
-            if flip:
-                xxx[2] = -xxx[2]
-            xyz_ = ' '.join([f"{x:.6f}" for x in xxx])
-            # xyz_ = ' '.join([f"{x*10:.6f}" for x in line])
-            xyzfile+=f"{atom} {xyz_}\n"
-        xyzfiles.append(xyzfile)
-    # print(xyzfile)
-    integrated_xyz = ''.join(xyzfiles)
-    with open( "integrated_xyz.xyz" , 'w') as f:
-        f.write(integrated_xyz)
-    with open( "final_coord4.xyz" , 'w') as f:
-        f.write(xyzfile)
+aligns = []
+atoms = [
+"N",
+"H",
+"H",
+"H",
+"C",
+"H",
+"H",
+"C",
+"H",
+"H",
+"C",
+"H",
+"H",
+"C",
+"O",
+"O",
+"O",
+"H",
+"H",
+"O",
+"H",
+"H",
+"O",
+"H",
+"H",
+"O",
+"H",
+"H",
+"O",
+"H",
+"H",
+"O",
+"H",
+"H",
+"O",
+"H",
+"H",
+]
+xyzfiles = []
+for c in coords: 
+    xyzfile = f'''{len(atoms)}\n\n'''
+    aligned, original, triangle_pts, normal_vec = align_frame(c,[4,7,10])
+    aligns.append(aligned)
+    flip = ( list(aligned)[12][2] < 0  )
+    for atom, line in zip ( atoms, aligned): 
+        xxx = [x*10 for x in line]
+        if flip:
+            xxx[2] = -xxx[2]
+        xyz_ = ' '.join([f"{x:.6f}" for x in xxx])
+        # xyz_ = ' '.join([f"{x*10:.6f}" for x in line])
+        xyzfile+=f"{atom} {xyz_}\n"
+    xyzfiles.append(xyzfile)
+# print(xyzfile)
+integrated_xyz = ''.join(xyzfiles)
+with open( "integrated_xyz.xyz" , 'w') as f:
+    f.write(integrated_xyz)
+with open( "final_coord4.xyz" , 'w') as f:
+    f.write(xyzfile)
