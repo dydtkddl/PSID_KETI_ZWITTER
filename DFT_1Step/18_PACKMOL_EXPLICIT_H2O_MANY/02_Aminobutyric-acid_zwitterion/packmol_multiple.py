@@ -73,7 +73,7 @@ progress = tqdm(range(1, n_cases + 1)) if not verbose else range(1, n_cases + 1)
 
 for i in progress:
     index = f"{i:03d}"     # 파일명 001 ~ n 형식
-    seed = 1000 + i        # Seed 값 고유하게 설정
+    seed = 12 + i        # Seed 값 고유하게 설정
 
     inp_filename = f"packmol_case_{index}.inp"
     inp_path = os.path.join(input_dir, inp_filename)
