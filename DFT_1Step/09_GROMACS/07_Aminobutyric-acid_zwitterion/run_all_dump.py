@@ -27,7 +27,7 @@ def main(sim_dir,  nt):
 # def main(sim_dir, start, end, nt):
     sim_dir = Path(sim_dir).resolve()
     import os 
-    for sim_name in os.listdir(sim_dir):
+    for sim_name in [ x for x in os.listdir(sim_dir) if os.path.isdir(os.path.join(sim_dir, x))]:
         sim_path = sim_dir / sim_name
 
         if not sim_path.exists():
