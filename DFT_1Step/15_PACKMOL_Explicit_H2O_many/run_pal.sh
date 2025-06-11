@@ -6,10 +6,10 @@ ORCA=/home/ys/orca_6_0_1_linux_x86-64_shared_openmpi416/orca
 # 각 노드와 해당 디렉터리 매핑
 declare -a NODES=("psid06" "psid07" "psid08" "psid09")
 declare -a DIRS=(
-"/home/ys/PSID_KETI_ZWITTER/DFT_1Step/15_PACKMOL_Explicit_H2O_many/00_Aminobutyric-acid_zwitterion/packmol_outputs/removed02/orca"
-"/home/ys/PSID_KETI_ZWITTER/DFT_1Step/15_PACKMOL_Explicit_H2O_many/02_Aminobutyric-acid_zwitterion/packmol_outputs/removed02/orca"
-"/home/ys/PSID_KETI_ZWITTER/DFT_1Step/15_PACKMOL_Explicit_H2O_many/04_Aminobutyric-acid_zwitterion/packmol_outputs/removed02/orca"
-"/home/ys/PSID_KETI_ZWITTER/DFT_1Step/15_PACKMOL_Explicit_H2O_many/07_Aminobutyric-acid_zwitterion/packmol_outputs/removed02/orca"
+"/home/ys/PSID_KETI_ZWITTER/DFT_1Step/15_PACKMOL_Explicit_H2O_many/00_Aminobutyric-acid_zwitterion/packmol_outputs/removed04/orca"
+"/home/ys/PSID_KETI_ZWITTER/DFT_1Step/15_PACKMOL_Explicit_H2O_many/02_Aminobutyric-acid_zwitterion/packmol_outputs/removed03/orca"
+"/home/ys/PSID_KETI_ZWITTER/DFT_1Step/15_PACKMOL_Explicit_H2O_many/04_Aminobutyric-acid_zwitterion/packmol_outputs/removed03/orca"
+"/home/ys/PSID_KETI_ZWITTER/DFT_1Step/15_PACKMOL_Explicit_H2O_many/07_Aminobutyric-acid_zwitterion/packmol_outputs/removed03/orca"
 )
 
 # 병렬 실행
